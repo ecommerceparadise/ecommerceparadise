@@ -1,0 +1,10 @@
+{
+  "_comment": "The ONLY Google Ads accounts this project may read or modify. Anything not listed here is refused by google_ads.accounts.resolve_account, even if the credentials can reach it. Add or remove entries deliberately.",
+  "accounts": [
+    { "id": "6526674673", "name": "BetterPatio.com" },
+    { "id": "9993465456", "name": "Laser Engraver Store" },
+    { "id": "7871916737", "name": "eCommerce Paradise" },
+    { "id": "3366783507", "name": "Culinary Profis" },
+    { "id": "8148956333", "name": "Fountains USA" }
+  ]
+}
