@@ -2,8 +2,8 @@
 
     python scripts/verify_connection.py
 
-Makes no changes to any account. Run this after setting credentials, and any
-time you suspect the connection has broken.
+Confirms the credentials authenticate, then lists every client account
+reachable under the manager account. Changes nothing.
 """
 
 import sys
@@ -11,7 +11,8 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 
-from google_ads.auth import get_client, get_customer_id, missing_vars  # noqa: E402
+from google_ads.auth import get_client, get_login_customer_id, missing_vars  # noqa: E402
+from google_ads.accounts import list_accounts  # noqa: E402
 
 
 def main():
@@ -23,67 +24,38 @@ def main():
         print("\nSee README.md for where each value comes from.")
         return 1
 
-    print("Credentials found. Testing API connection...\n")
+    print("Credentials found. Testing connection...\n")
 
     try:
         client = get_client()
+        client.get_service("CustomerService").list_accessible_customers()
     except Exception as exc:
-        print(f"Could not build the client: {exc}")
-        return 1
-
-    # 1. Which accounts can these credentials reach?
-    try:
-        customer_service = client.get_service("CustomerService")
-        accessible = customer_service.list_accessible_customers()
-    except Exception as exc:
-        print(f"Auth failed when listing accessible accounts:\n  {exc}\n")
+        print(f"Authentication failed:\n  {exc}\n")
         print("Common causes:")
-        print("  - developer token is wrong, or not approved for this manager account")
-        print("  - GOOGLE_ADS_LOGIN_CUSTOMER_ID is not the manager (MCC) account ID")
-        print("  - the signing-in email is not a test user on the OAuth consent screen")
+        print("  - developer token wrong, or not from this manager account")
+        print("  - GOOGLE_ADS_LOGIN_CUSTOMER_ID is not the manager (MCC) ID")
+        print("  - refresh token expired (7-day limit while the OAuth app is")
+        print("    in Testing mode) — redo the OAuth Playground step")
         return 1
 
-    ids = [name.split("/")[-1] for name in accessible.resource_names]
-    print(f"Authenticated. {len(ids)} account(s) reachable:")
-    for account_id in ids:
-        print(f"  - {account_id}")
-
-    # 2. Can we read the target account?
-    try:
-        customer_id = get_customer_id()
-    except RuntimeError as exc:
-        print(f"\nAuth works, but no target account set.\n  {exc}")
-        return 1
-
-    print(f"\nReading campaigns from target account {customer_id}...")
-
-    query = """
-        SELECT campaign.id, campaign.name, campaign.status,
-               campaign.advertising_channel_type
-        FROM campaign
-        ORDER BY campaign.id
-        LIMIT 10
-    """
+    print(f"Authenticated against manager account {get_login_customer_id()}.\n")
 
     try:
-        ga_service = client.get_service("GoogleAdsService")
-        rows = list(ga_service.search(customer_id=customer_id, query=query))
+        accounts = list_accounts(client=client)
     except Exception as exc:
-        print(f"Could not read that account:\n  {exc}\n")
-        print("Check that GOOGLE_ADS_CUSTOMER_ID is linked under the manager account")
-        print("and that the link invitation was accepted.")
+        print(f"Authenticated, but could not read the account list:\n  {exc}")
         return 1
 
-    if not rows:
-        print("  (no campaigns yet — the connection works, the account is just empty)")
-    else:
-        for row in rows:
-            print(
-                f"  [{row.campaign.status.name}] {row.campaign.id} "
-                f"{row.campaign.name} ({row.campaign.advertising_channel_type.name})"
-            )
+    if not accounts:
+        print("No active client accounts found under this manager account.")
+        return 0
 
-    print("\nCONNECTED. Read access confirmed.")
+    width = max(len(a["name"]) for a in accounts)
+    print(f"{len(accounts)} client account(s) reachable:\n")
+    for account in accounts:
+        print(f"  {account['name']:<{width}}  {account['id']}  {account['currency']}")
+
+    print("\nCONNECTED. Read access confirmed on all accounts above.")
     return 0
 
 

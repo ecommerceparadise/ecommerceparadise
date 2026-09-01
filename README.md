@@ -18,18 +18,36 @@ only. If you didn't, do all the steps once and save them this time.
 
 ## What you need
 
-Six values:
+Five values. Dashes and spaces in the IDs are stripped automatically.
 
 | Value | Where it comes from |
 |---|---|
 | `GOOGLE_ADS_DEVELOPER_TOKEN` | Manager account (MCC) → Admin → API Center |
-| `GOOGLE_ADS_CLIENT_ID` | `credentials.json` from Google Cloud Console |
-| `GOOGLE_ADS_CLIENT_SECRET` | same `credentials.json` |
-| `GOOGLE_ADS_REFRESH_TOKEN` | `scripts/get_refresh_token.py` (one time, needs a browser) |
+| `GOOGLE_ADS_CLIENT_ID` | Google Cloud → Credentials → your OAuth client |
+| `GOOGLE_ADS_CLIENT_SECRET` | same OAuth client |
+| `GOOGLE_ADS_REFRESH_TOKEN` | the OAuth Playground flow, below |
 | `GOOGLE_ADS_LOGIN_CUSTOMER_ID` | manager (MCC) account ID, 10 digits |
-| `GOOGLE_ADS_CUSTOMER_ID` | the account you're operating on, 10 digits |
 
-Dashes and spaces in the IDs are stripped automatically.
+There is deliberately **no per-client credential**. One set of credentials
+reaches every account linked under the manager account, so the operating
+account is a per-request parameter rather than stored configuration.
+`GOOGLE_ADS_CUSTOMER_ID` exists only as an optional default.
+
+## Working across client accounts
+
+```bash
+.venv/bin/python scripts/list_accounts.py     # names + IDs of every client account
+```
+
+```python
+from google_ads.accounts import resolve_account
+
+account = resolve_account("Acme Plumbing")    # name fragment or 10-digit ID
+account["id"]
+```
+
+`resolve_account` refuses to guess: an ambiguous name raises rather than
+silently operating on the wrong client's account.
 
 ## Setup
 
@@ -57,14 +75,30 @@ collides with the preinstalled `cryptography` package and breaks the import.
 
 ### 3. Get a refresh token
 
-Run this **on a machine with a browser** — a cloud session has no browser:
+Two ways. Both need a browser, so neither can run in a cloud session.
+
+**Browser only (no terminal) — the OAuth Playground.** Requires the OAuth
+client to be of type **Web application** with
+`https://developers.google.com/oauthplayground` as an authorized redirect URI.
+
+1. Open https://developers.google.com/oauthplayground
+2. Gear icon → check **Use your own OAuth credentials** → paste client ID and
+   secret → confirm **Access type: Offline**
+3. Left panel → **Input your own scopes** →
+   `https://www.googleapis.com/auth/adwords` → **Authorize APIs**
+4. Sign in as the test user. On "Google hasn't verified this app", click
+   **Advanced** → continue. Expected for a private app.
+5. **Exchange authorization code for tokens** → copy the `refresh_token`
+
+**Or locally, with a Desktop-app OAuth client:**
 
 ```bash
 .venv/bin/python scripts/get_refresh_token.py
 ```
 
-Sign in with the email you added as a test user. It prints your client ID,
-client secret and refresh token. The refresh token does not expire.
+> **Refresh tokens expire after 7 days while the OAuth app's publishing status
+> is "Testing."** To stop that, set the app to **In production** under
+> Google Auth Platform → Audience. Unverified is fine for a private app.
 
 ### 4. Store the credentials
 
@@ -93,16 +127,17 @@ makes the next reconnect a two-minute job.
 .venv/bin/python scripts/verify_connection.py
 ```
 
-Read-only. It lists the accounts your credentials can reach, then reads up to
-10 campaigns from the target account. It changes nothing.
+Read-only. Confirms the credentials authenticate, then lists every client
+account reachable under the manager. Changes nothing.
 
 ## Using it
 
 ```python
-from google_ads.auth import get_client, get_customer_id
+from google_ads.auth import get_client
+from google_ads.accounts import resolve_account
 
 client = get_client()
-customer_id = get_customer_id()
+customer_id = resolve_account("Acme Plumbing")["id"]
 ```
 
 ## Troubleshooting
@@ -112,7 +147,7 @@ customer_id = get_customer_id()
 | `invalid_client: The OAuth client was not found` | client ID/secret wrong, or the Cloud project was deleted |
 | `USER_PERMISSION_DENIED` | operating account isn't linked under the manager account, or `LOGIN_CUSTOMER_ID` isn't the manager ID |
 | `DEVELOPER_TOKEN_NOT_APPROVED` | token belongs to a different manager account, or needs Basic Access |
-| `invalid_grant` | refresh token revoked — re-run step 3 |
+| `invalid_grant` | refresh token revoked, or expired after 7 days in Testing mode — re-run step 3 |
 | Consent screen blocks sign-in | your email isn't a test user on the consent screen |
 | Quota errors | 2,880/day test-access cap — batch calls or apply for Basic Access |
 

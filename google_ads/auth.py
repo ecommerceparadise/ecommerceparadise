@@ -20,7 +20,9 @@ REQUIRED_VARS = [
     "GOOGLE_ADS_LOGIN_CUSTOMER_ID",
 ]
 
-# Needed to target an account, but not to authenticate.
+# Optional. A convenience default only; the operating account is normally
+# passed per request, because one set of credentials reaches every client
+# account linked under the manager.
 TARGET_VAR = "GOOGLE_ADS_CUSTOMER_ID"
 
 
@@ -72,14 +74,20 @@ def get_client():
     return GoogleAdsClient.load_from_dict(get_config())
 
 
-def get_customer_id():
-    """Return the target (operating) account ID, digits only."""
+def get_login_customer_id():
+    """Return the manager (MCC) account ID, digits only."""
+    load_env()
+    return _clean_id(os.environ["GOOGLE_ADS_LOGIN_CUSTOMER_ID"])
+
+
+def get_customer_id(default=None):
+    """Return the default operating account ID, or None if none is set.
+
+    Optional by design: most work names the client account explicitly, and
+    google_ads.accounts.resolve_account turns a client name into an ID.
+    """
     load_env()
     value = os.environ.get(TARGET_VAR, "").strip()
     if not value:
-        raise RuntimeError(
-            f"{TARGET_VAR} is not set. This is the 10-digit ID of the account you "
-            "want to operate on (no dashes). Set it in .env or pass a customer_id "
-            "explicitly."
-        )
+        return _clean_id(default) if default else None
     return _clean_id(value)
