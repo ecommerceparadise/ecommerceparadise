@@ -1,0 +1,26 @@
+{
+  "account": "Laser Engraver Store",
+  "account_id": "9993465456",
+  "match_type": "PHRASE",
+  "notes": "Retail laser engravers / 3D printers (Flashforge, Gweike, etc.). Those brand names are products they sell, not competitors. SKAG structure already isolates model-specific terms well; this is standard hygiene, not a response to a specific problem found in the data.",
+  "negatives": [
+    {"term": "jobs", "category": "job_seeking"},
+    {"term": "hiring", "category": "job_seeking"},
+    {"term": "careers", "category": "job_seeking"},
+    {"term": "salary", "category": "job_seeking"},
+    {"term": "course", "category": "education"},
+    {"term": "certification", "category": "education"},
+    {"term": "class near me", "category": "education"},
+    {"term": "how to use", "category": "diy_informational"},
+    {"term": "tutorial", "category": "diy_informational"},
+    {"term": "settings guide", "category": "diy_informational"},
+    {"term": "firmware", "category": "diy_informational"},
+    {"term": "diy build", "category": "diy_informational"},
+    {"term": "reddit", "category": "irrelevant_noise"},
+    {"term": "forum", "category": "irrelevant_noise"},
+    {"term": "free download", "category": "no_purchase_intent"},
+    {"term": "torrent", "category": "no_purchase_intent"},
+    {"term": "customer service", "category": "support_seeking"},
+    {"term": "warranty claim", "category": "support_seeking"}
+  ]
+}

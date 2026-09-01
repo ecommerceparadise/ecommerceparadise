@@ -1,0 +1,18 @@
+{
+  "account": "Fountains USA",
+  "account_id": "8148956333",
+  "match_type": "PHRASE",
+  "notes": "Retail outdoor fountains / water features. Entire account is currently paused, so no search-term evidence yet -- this is baseline hygiene to have in place before the rebuild goes live.",
+  "negatives": [
+    {"term": "jobs", "category": "job_seeking"},
+    {"term": "hiring", "category": "job_seeking"},
+    {"term": "careers", "category": "job_seeking"},
+    {"term": "how to build a fountain", "category": "diy_informational"},
+    {"term": "diy fountain", "category": "diy_informational"},
+    {"term": "tutorial", "category": "diy_informational"},
+    {"term": "repair near me", "category": "support_seeking"},
+    {"term": "customer service", "category": "support_seeking"},
+    {"term": "reddit", "category": "irrelevant_noise"},
+    {"term": "forum", "category": "irrelevant_noise"}
+  ]
+}

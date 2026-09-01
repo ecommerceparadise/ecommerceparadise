@@ -1,0 +1,21 @@
+{
+  "account": "eCommerce Paradise",
+  "account_id": "7871916737",
+  "match_type": "PHRASE",
+  "notes": "Sells education/coaching/DFY services, not physical products -- unlike the other 4 accounts, general product/supply terms don't apply. Includes 2 CONFIRMED competitor terms found in the search term audit: sellvia and spocket are dropshipping supplier platforms, not people looking for Trevor's coaching -- $17.85 combined spend, zero conversions.",
+  "negatives": [
+    {"term": "jobs", "category": "job_seeking"},
+    {"term": "hiring", "category": "job_seeking"},
+    {"term": "careers", "category": "job_seeking"},
+    {"term": "resume", "category": "job_seeking"},
+    {"term": "free course", "category": "no_purchase_intent"},
+    {"term": "free guide", "category": "no_purchase_intent"},
+    {"term": "torrent", "category": "no_purchase_intent"},
+    {"term": "reddit", "category": "irrelevant_noise"},
+    {"term": "scam", "category": "irrelevant_noise"},
+    {"term": "sellvia", "category": "competitor", "evidence": "$10.00 spend, 1 click, 0 conversions -- dropshipping supplier platform, not a coaching prospect"},
+    {"term": "spocket", "category": "competitor", "evidence": "$7.85 spend, 1 click, 0 conversions -- dropshipping supplier platform, not a coaching prospect"},
+    {"term": "dropshipping suppliers", "category": "intent_mismatch", "evidence": "$19.70 spend, 2 clicks, 0 conversions -- looking for a product supplier, EP sells coaching/DFY builds not sourcing"},
+    {"term": "fashion dropshipping", "category": "intent_mismatch", "evidence": "$3.28 spend, 1 click -- niche-specific browsing outside EP's high-ticket angle"}
+  ]
+}

@@ -1,0 +1,20 @@
+{
+  "account": "Culinary Profis",
+  "account_id": "3366783507",
+  "match_type": "PHRASE",
+  "notes": "Retail professional/commercial kitchen equipment (Ankarsrum, etc.). Currently near-zero live traffic (only enabled campaign's sole ad is paused), so no search-term evidence yet -- this is baseline hygiene to have in place before the rebuild goes live.",
+  "negatives": [
+    {"term": "jobs", "category": "job_seeking"},
+    {"term": "hiring", "category": "job_seeking"},
+    {"term": "chef jobs", "category": "job_seeking"},
+    {"term": "culinary school", "category": "education"},
+    {"term": "culinary course", "category": "education"},
+    {"term": "certification", "category": "education"},
+    {"term": "how to become a chef", "category": "education"},
+    {"term": "recipe", "category": "diy_informational"},
+    {"term": "how to cook", "category": "diy_informational"},
+    {"term": "reddit", "category": "irrelevant_noise"},
+    {"term": "forum", "category": "irrelevant_noise"},
+    {"term": "customer service", "category": "support_seeking"}
+  ]
+}

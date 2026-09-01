@@ -1,0 +1,26 @@
+{
+  "account": "BetterPatio.com",
+  "account_id": "6526674673",
+  "match_type": "PHRASE",
+  "notes": "Retail outdoor living (grills, outdoor kitchens, patio furniture, fire features). Brand names already in their own campaigns (Cal Flame, Panama Jack, Mont Alpi, Bull, Blaze, Coyote, etc.) are suppliers they SELL, not competitors -- never negative those. No specific competitor retailers confirmed yet; add real ones (e.g. a rival outdoor-living retailer) once identified rather than guessing.",
+  "negatives": [
+    {"term": "jobs", "category": "job_seeking"},
+    {"term": "hiring", "category": "job_seeking"},
+    {"term": "careers", "category": "job_seeking"},
+    {"term": "salary", "category": "job_seeking"},
+    {"term": "resume", "category": "job_seeking"},
+    {"term": "indeed", "category": "job_seeking"},
+    {"term": "ziprecruiter", "category": "job_seeking"},
+    {"term": "how to build", "category": "diy_informational"},
+    {"term": "diy plans", "category": "diy_informational"},
+    {"term": "tutorial", "category": "diy_informational"},
+    {"term": "wiki", "category": "diy_informational"},
+    {"term": "reddit", "category": "irrelevant_noise"},
+    {"term": "forum", "category": "irrelevant_noise"},
+    {"term": "reviews complaints", "category": "irrelevant_noise"},
+    {"term": "recall", "category": "irrelevant_noise"},
+    {"term": "customer service", "category": "support_seeking"},
+    {"term": "login", "category": "support_seeking"},
+    {"term": "my account", "category": "support_seeking"}
+  ]
+}
