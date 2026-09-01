@@ -1,0 +1,14 @@
+# Credentials — NEVER commit these
+.env
+credentials.json
+google-ads.yaml
+*.token.json
+
+# Python
+.venv/
+venv/
+__pycache__/
+*.pyc
+
+# OS
+.DS_Store
