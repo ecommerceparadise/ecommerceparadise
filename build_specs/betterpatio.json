@@ -8,121 +8,43 @@
   "all_campaigns_created_paused": true,
   "campaigns": [
     {
-      "name": "BP \u00b7 Custom Kitchens \u2014 SKAG",
-      "type": "SEARCH",
-      "daily_budget": 50.0,
-      "bid_strategy": "MAXIMIZE_CONVERSIONS",
-      "final_url": "https://betterpatio.com/pages/custom-outdoor-kitchens",
-      "rationale": "The ONLY converting pattern in the account. Every SKAG points at the custom kitchen funnel and converts on lead form submission -- the one conversion action still firing (18/30d). Measurable today without waiting on the purchase pixel.",
-      "skags": [
-        {
-          "keyword": "outdoor kitchens near me",
-          "match": "PHRASE",
-          "monthly_searches": 3600,
-          "bid_low": 2.88,
-          "bid_high": 11.0,
-          "note": "Highest purchase intent in the entire dataset -- 'near me' plus category",
-          "landing_page": {
-            "url": "https://betterpatio.com/pages/custom-outdoor-kitchens",
-            "type": "custom_kitchen_sales_funnel",
-            "converts_on": "lead form submission"
-          }
-        },
-        {
-          "keyword": "modular outdoor kitchen",
-          "match": "PHRASE",
-          "monthly_searches": 12100,
-          "bid_low": 1.41,
-          "bid_high": 6.72,
-          "landing_page": {
-            "url": "https://betterpatio.com/pages/custom-outdoor-kitchens",
-            "type": "custom_kitchen_sales_funnel",
-            "converts_on": "lead form submission"
-          }
-        },
-        {
-          "keyword": "prefab outdoor kitchen",
-          "match": "PHRASE",
-          "monthly_searches": 12100,
-          "bid_low": 1.41,
-          "bid_high": 6.72,
-          "landing_page": {
-            "url": "https://betterpatio.com/pages/custom-outdoor-kitchens",
-            "type": "custom_kitchen_sales_funnel",
-            "converts_on": "lead form submission"
-          }
-        },
-        {
-          "keyword": "outdoor kitchen island",
-          "match": "PHRASE",
-          "monthly_searches": 8100,
-          "bid_low": 1.55,
-          "bid_high": 7.05,
-          "landing_page": {
-            "url": "https://betterpatio.com/pages/custom-outdoor-kitchens",
-            "type": "custom_kitchen_sales_funnel",
-            "converts_on": "lead form submission"
-          }
-        },
-        {
-          "keyword": "bbq island",
-          "match": "PHRASE",
-          "monthly_searches": 3600,
-          "bid_low": 1.42,
-          "bid_high": 8.1,
-          "landing_page": {
-            "url": "https://betterpatio.com/pages/custom-outdoor-kitchens",
-            "type": "custom_kitchen_sales_funnel",
-            "converts_on": "lead form submission"
-          }
-        },
-        {
-          "keyword": "mont alpi outdoor kitchen",
-          "match": "PHRASE",
-          "monthly_searches": 1600,
-          "bid_low": 2.5,
-          "bid_high": 13.77,
-          "note": "Highest bid range in the set -- expensive but signals high order value",
-          "landing_page": {
-            "url": "https://betterpatio.com/pages/custom-outdoor-kitchens",
-            "type": "custom_kitchen_sales_funnel",
-            "converts_on": "lead form submission"
-          }
-        }
-      ]
-    },
-    {
-      "name": "BP \u00b7 Shopping \u2014 Brand/Model",
-      "type": "SHOPPING",
-      "daily_budget": 50.0,
-      "bid_strategy": "MANUAL_CPC",
-      "priority": "LOW",
-      "merchant_id": 101451631,
-      "rationale": "Owns ALL product-specific traffic per Trevor's direction. Destination URLs come from the feed, so every click lands on a product page. Budget raised from $35 now that it absorbs the brand/product intent formerly handled by Search."
-    },
-    {
       "name": "BP \u00b7 PMax \u2014 Outdoor Kitchens",
       "type": "PERFORMANCE_MAX",
-      "daily_budget": 40.0,
+      "daily_budget": 110.0,
       "bid_strategy": "MAXIMIZE_CONVERSIONS",
       "merchant_id": 101451631,
       "spec_file": "build_specs/betterpatio_pmax.json",
-      "rationale": "Focused on outdoor kitchens -- the one asset group with complete image coverage from existing account assets. 218 SKUs. Product ads route to product pages via the feed; other placements go to the custom kitchen funnel."
+      "final_url_expansion": false,
+      "rationale": "Absorbs Search and Shopping -- PMax serves all channels. Product ads route to product pages via the feed; search text ads and every other placement route to the custom kitchen funnel.",
+      "critical_setting": "FINAL URL EXPANSION MUST BE OFF. Left on, Google sends traffic to whatever page it judges relevant -- including the collection pages we are deliberately removing from paid.",
+      "tradeoff_noted": "Folding Search into PMax gives up SKAG-level control and search-term visibility; PMax reports at asset-group level, not search-term level. Trevor's call, made with that understood."
     },
     {
-      "name": "BP RT \u00b7 Display Remarketing",
+      "name": "BP RT 2: Static Display Remarketing",
       "type": "DISPLAY",
-      "daily_budget": 10.0,
+      "daily_budget": 20.0,
       "bid_strategy": "MAXIMIZE_CONVERSIONS",
-      "action": "keep_existing_raise_budget",
-      "rationale": "RETAINED. Best CPA in the account -- 7 conversions at $21 on $147/mo, budget-starved at $5/day."
+      "action": "KEEP \u2014 optimize",
+      "final_url": "https://betterpatio.com/pages/custom-outdoor-kitchens",
+      "final_url_change": "Currently points at betterpatio.com homepage. Repointed to the funnel only.",
+      "rationale": "Best CPA in the account: 6 conversions at ~$25 on $149/mo while starved at $5/day. Raised to $20 and pointed exclusively at the custom kitchen funnel."
+    },
+    {
+      "name": "Dynamic Display Remarketing Ads",
+      "type": "DISPLAY",
+      "daily_budget": 20.0,
+      "bid_strategy": "MAXIMIZE_CONVERSIONS",
+      "action": "KEEP \u2014 optimize",
+      "merchant_id": 101451631,
+      "dynamic_remarketing": true,
+      "rationale": "Kept and optimized. Serves feed-driven dynamic product ads so viewers see the exact products they browsed, landing on product pages.",
+      "root_cause_found": "Currently sends all traffic to the betterpatio.com HOMEPAGE, which is very likely why it has produced ZERO conversions on $291/mo. Switching it to feed-driven product ads is the actual fix, not merely a budget change."
     }
   ],
   "budget_allocation_check": {
-    "custom_kitchens_search": 50.0,
-    "shopping": 50.0,
-    "pmax_outdoor_kitchens": 40.0,
-    "remarketing": 10.0,
+    "pmax_outdoor_kitchens": 110.0,
+    "static_display_remarketing": 20.0,
+    "dynamic_display_remarketing": 20.0,
     "total": 150.0
   },
   "required_negatives": {
@@ -140,11 +62,9 @@
     "status_at_creation": "PAUSED"
   },
   "landing_page_policy": {
-    "model": "PMax + Shopping -> product pages (from feed). Search -> custom kitchen funnel. Retargeting -> retained. Nothing points at collections.",
+    "model": "Three campaigns. PMax serves all channels -- products via feed, everything else to the custom kitchen funnel. Static remarketing -> funnel only. Dynamic remarketing -> product pages via feed. Nothing points at collections or the homepage.",
     "funnel_url": "https://betterpatio.com/pages/custom-outdoor-kitchens",
-    "funnel_url_source": "VERIFIED \u2014 live final URL on 'Build Your Own Outdoor Kitchen Campaign', the account's only converting campaign.",
-    "evidence_collections_dont_convert": "3 enabled Search campaigns point exclusively at collection pages and produced ZERO conversions on $834.81/mo combined: BP S1 Categories Search ($231.15), BP S2 Brands Search ($441.37), BP S3 Brands Expansion ($162.29).",
-    "dropped_grill_skags": "blaze grill / bull grill / fire magic grill / coyote gas grill removed from Search. They are product-specific intent, which Shopping and PMax now own with real product listings. Keeping them in Search would compete with our own Shopping ads on the same queries."
+    "funnel_url_source": "VERIFIED \u2014 live final URL on 'Build Your Own Outdoor Kitchen Campaign', the account's only converting campaign."
   },
   "cutover_plan": {
     "critical": "The account currently has 12 ENABLED campaigns totalling $392/day in budget capacity. Launching the new build without pausing them would leave the account at $542/day and put new campaigns in direct competition with old ones on the same keywords and the same product feed.",
@@ -161,93 +81,102 @@
         "campaign": "Build Your Own Outdoor Kitchen Campaign",
         "budget": 45.0,
         "conv": 11.0,
-        "action": "PAUSE \u2014 replaced",
-        "replaced_by": "BP \u00b7 Custom Kitchens \u2014 SKAG",
+        "action": "PAUSE \u2014 replaced by PMax",
+        "replaced_by": "BP \u00b7 PMax \u2014 Outdoor Kitchens",
         "note": "The account's only converting Search campaign, so this is the one carrying real risk. The replacement targets the SAME funnel with proper SKAG structure, so running both would mean bidding against ourselves on identical kitchen terms. If Trevor prefers caution, the alternative is to leave this live for 2 weeks and launch the SKAG campaign alongside at reduced budget -- accepting some self-competition in exchange for not interrupting the one thing that works."
       },
       {
         "campaign": "BP 2: Brands - All Brands",
         "budget": 90.0,
         "conv": 0.0,
-        "action": "PAUSE \u2014 replaced",
-        "replaced_by": "BP \u00b7 Shopping \u2014 Brand/Model"
+        "action": "PAUSE \u2014 replaced by PMax",
+        "replaced_by": "BP \u00b7 PMax \u2014 Outdoor Kitchens"
       },
       {
         "campaign": "BP 3: Products - All Brands",
         "budget": 90.0,
         "conv": 0.0,
-        "action": "PAUSE \u2014 replaced",
-        "replaced_by": "BP \u00b7 Shopping \u2014 Brand/Model"
+        "action": "PAUSE \u2014 replaced by PMax",
+        "replaced_by": "BP \u00b7 PMax \u2014 Outdoor Kitchens"
       },
       {
         "campaign": "BP 1: Generic - All Brands",
         "budget": 90.0,
         "conv": 0.0,
-        "action": "PAUSE \u2014 replaced",
-        "replaced_by": "BP \u00b7 Shopping \u2014 Brand/Model"
+        "action": "PAUSE \u2014 replaced by PMax",
+        "replaced_by": "BP \u00b7 PMax \u2014 Outdoor Kitchens"
       },
       {
         "campaign": "BP S2: Brands Search",
         "budget": 15.0,
         "conv": 0.0,
-        "action": "PAUSE \u2014 no replacement",
-        "reason": "all ads point at collection pages; zero conversions"
+        "action": "PAUSE \u2014 replaced by PMax",
+        "reason": "all ads point at collection pages; zero conversions",
+        "replaced_by": "BP \u00b7 PMax \u2014 Outdoor Kitchens"
       },
       {
         "campaign": "BP S1: Categories Search",
         "budget": 8.0,
         "conv": 0.0,
-        "action": "PAUSE \u2014 no replacement",
-        "reason": "all ads point at collection pages; zero conversions"
+        "action": "PAUSE \u2014 replaced by PMax",
+        "reason": "all ads point at collection pages; zero conversions",
+        "replaced_by": "BP \u00b7 PMax \u2014 Outdoor Kitchens"
       },
       {
         "campaign": "BP S3: Brands Expansion",
         "budget": 25.0,
         "conv": 0.0,
-        "action": "PAUSE \u2014 no replacement",
-        "reason": "all ads point at collection pages; zero conversions"
+        "action": "PAUSE \u2014 replaced by PMax",
+        "reason": "all ads point at collection pages; zero conversions",
+        "replaced_by": "BP \u00b7 PMax \u2014 Outdoor Kitchens"
       },
       {
         "campaign": "Dynamic Display Remarketing Ads",
         "budget": 10.0,
         "conv": 0.0,
-        "action": "PAUSE \u2014 no replacement",
-        "reason": "zero conversions on $291/mo; BP RT 2 is the remarketing that works"
+        "action": "KEEP \u2014 optimize",
+        "reason": "zero conversions on $291/mo; BP RT 2 is the remarketing that works",
+        "note": "Retained per Trevor. Repointed from homepage to feed-driven product ads -- the homepage destination is the likely cause of its zero conversions."
       },
       {
         "campaign": "BP RT 3: Demand Gen Warm",
         "budget": 5.0,
         "conv": 0.0,
-        "action": "PAUSE \u2014 no replacement",
-        "reason": "zero conversions on $148/mo"
+        "action": "PAUSE \u2014 replaced by PMax",
+        "reason": "zero conversions on $148/mo",
+        "replaced_by": "BP \u00b7 PMax \u2014 Outdoor Kitchens"
       },
       {
         "campaign": "BP RT 1: Warm Search",
         "budget": 5.0,
         "conv": 0.0,
-        "action": "PAUSE \u2014 no replacement",
-        "reason": "zero conversions; points at homepage"
+        "action": "PAUSE \u2014 replaced by PMax",
+        "reason": "zero conversions; points at homepage",
+        "replaced_by": "BP \u00b7 PMax \u2014 Outdoor Kitchens"
       },
       {
         "campaign": "BP RT 4: High-Intent Abandoners",
         "budget": 4.0,
         "conv": 0.0,
-        "action": "PAUSE \u2014 no replacement",
-        "reason": "zero conversions on $117/mo"
+        "action": "PAUSE \u2014 replaced by PMax",
+        "reason": "zero conversions on $117/mo",
+        "replaced_by": "BP \u00b7 PMax \u2014 Outdoor Kitchens"
       },
       {
         "campaign": "BP RT 2: Static Display Remarketing",
         "budget": 5.0,
         "conv": 6.0,
-        "action": "KEEP \u2014 raise budget to $10",
-        "reason": "best CPA in the account; the only retained campaign"
+        "action": "KEEP \u2014 optimize",
+        "reason": "best CPA in the account; the only retained campaign",
+        "note": "Retained per Trevor. Static -> funnel only; Dynamic -> feed product pages."
       }
     ],
     "after_cutover": {
-      "enabled_campaigns": 4,
+      "enabled_campaigns": 3,
       "daily_budget": 150.0,
-      "note": "1 retained (BP RT 2) + 3 new. 11 campaigns paused."
+      "note": "1 new PMax + 2 retained remarketing campaigns. 10 campaigns paused."
     },
-    "already_paused": "~90 further campaigns are already paused or removed and cost nothing. Left alone deliberately -- the methodology says pause, never delete, and they carry historical data."
+    "already_paused": "~90 further campaigns are already paused or removed and cost nothing. Left alone deliberately -- the methodology says pause, never delete, and they carry historical data.",
+    "flag_for_trevor": "'BP RT 4: High-Intent Abandoners' is also a Display remarketing campaign (cart abandoners, $4/day, ZERO conversions on $117/mo). Trevor named only the dynamic and static campaigns, so this one is set to PAUSE. Say the word if it should be kept and optimized too."
   }
 }

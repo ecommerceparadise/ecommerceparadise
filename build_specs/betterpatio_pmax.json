@@ -3,7 +3,7 @@
   "account_id": "6526674673",
   "campaign_name": "BP \u00b7 PMax \u2014 Outdoor Kitchens",
   "type": "PERFORMANCE_MAX",
-  "daily_budget": 40.0,
+  "daily_budget": 110.0,
   "bid_strategy": "MAXIMIZE_CONVERSIONS",
   "status_at_creation": "PAUSED",
   "merchant_center": {
@@ -148,5 +148,11 @@
     "reason": "Trevor's call. The dropped groups had no matching image assets in the account (Pizza Ovens, Outdoor Kitchen Components) or only partial coverage (Built-In & Freestanding Grills -- Summerset only). Rather than launch asset groups with weak or borrowed imagery, PMax focuses on the one group with complete brand-matched image sets already in the account.",
     "coherence": "Also aligns the whole account on a single strategy: Search drives the custom kitchen funnel, PMax pushes kitchen products, Shopping covers the rest of the catalogue.",
     "revisit": "Pizza Ovens is the largest cluster in the feed (244 SKUs, Chicago Brick Oven alone 214). Worth reinstating as soon as imagery exists -- it is the biggest untapped opportunity in the account."
+  },
+  "final_url_expansion": false,
+  "scope_note": "PMax now serves ALL channels for this account -- it absorbs the Search and Shopping campaigns rather than running alongside them. Product ads route to product pages via the feed; search text ads and every other placement route to the custom kitchen funnel.",
+  "critical_settings": {
+    "final_url_expansion": "OFF \u2014 mandatory. Left on, Google routes traffic to whatever page it judges relevant, including the collection pages being deliberately removed from paid.",
+    "brand_exclusions": "Consider adding, so PMax does not absorb branded search that would convert organically."
   }
 }
