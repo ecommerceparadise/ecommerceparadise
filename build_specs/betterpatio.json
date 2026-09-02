@@ -10,7 +10,7 @@
     {
       "name": "BP \u00b7 Custom Kitchens \u2014 SKAG",
       "type": "SEARCH",
-      "daily_budget": 45.0,
+      "daily_budget": 50.0,
       "bid_strategy": "MAXIMIZE_CONVERSIONS",
       "final_url": "https://betterpatio.com/pages/custom-outdoor-kitchens",
       "rationale": "The ONLY converting pattern in the account. Every SKAG points at the custom kitchen funnel and converts on lead form submission -- the one conversion action still firing (18/30d). Measurable today without waiting on the purchase pixel.",
@@ -101,13 +101,13 @@
       "rationale": "Owns ALL product-specific traffic per Trevor's direction. Destination URLs come from the feed, so every click lands on a product page. Budget raised from $35 now that it absorbs the brand/product intent formerly handled by Search."
     },
     {
-      "name": "BP \u00b7 PMax \u2014 Retail Feed",
+      "name": "BP \u00b7 PMax \u2014 Outdoor Kitchens",
       "type": "PERFORMANCE_MAX",
-      "daily_budget": 45.0,
+      "daily_budget": 40.0,
       "bid_strategy": "MAXIMIZE_CONVERSIONS",
       "merchant_id": 101451631,
       "spec_file": "build_specs/betterpatio_pmax.json",
-      "rationale": "Second product channel. Feed-driven, so product ads route to product pages automatically. 4 asset groups covering 778 of 894 eligible SKUs."
+      "rationale": "Focused on outdoor kitchens -- the one asset group with complete image coverage from existing account assets. 218 SKUs. Product ads route to product pages via the feed; other placements go to the custom kitchen funnel."
     },
     {
       "name": "BP RT \u00b7 Display Remarketing",
@@ -119,52 +119,14 @@
     }
   ],
   "budget_allocation_check": {
-    "custom_kitchens_search": 45.0,
+    "custom_kitchens_search": 50.0,
     "shopping": 50.0,
-    "pmax": 45.0,
+    "pmax_outdoor_kitchens": 40.0,
     "remarketing": 10.0,
     "total": 150.0
   },
   "required_negatives": {
-    "note": "Campaign-level negatives beyond the shared universal list, driven by what the keyword data exposed.",
-    "BP \u00b7 Grills by Brand \u2014 SKAG": [
-      {
-        "term": "bar and grill",
-        "reason": "Coyote/restaurant contamination"
-      },
-      {
-        "term": "mexican grill",
-        "reason": "Coyote restaurant chain"
-      },
-      {
-        "term": "southwest grill",
-        "reason": "Coyote restaurant chain"
-      },
-      {
-        "term": "cantina",
-        "reason": "Restaurant"
-      },
-      {
-        "term": "menu",
-        "reason": "Restaurant intent"
-      },
-      {
-        "term": "restaurant",
-        "reason": "Restaurant intent"
-      },
-      {
-        "term": "sizzler",
-        "reason": "Restaurant chain surfacing in grill searches"
-      },
-      {
-        "term": "lux blaze",
-        "reason": "Unrelated product matching 'blaze'"
-      },
-      {
-        "term": "bullseye",
-        "reason": "Unrelated product matching 'bull'"
-      }
-    ]
+    "note": "Restaurant-contamination negatives are no longer needed -- the grill-brand SKAGs that required them were dropped. Universal negative list still applies (negative_keywords/betterpatio.json)."
   },
   "settings": {
     "location_targeting": "United States",

@@ -1,9 +1,9 @@
 {
   "account": "BetterPatio.com",
   "account_id": "6526674673",
-  "campaign_name": "BP \u00b7 PMax \u2014 Retail Feed",
+  "campaign_name": "BP \u00b7 PMax \u2014 Outdoor Kitchens",
   "type": "PERFORMANCE_MAX",
-  "daily_budget": 45.0,
+  "daily_budget": 40.0,
   "bid_strategy": "MAXIMIZE_CONVERSIONS",
   "status_at_creation": "PAUSED",
   "merchant_center": {
@@ -32,47 +32,6 @@
   },
   "business_name": "BetterPatio.com",
   "asset_groups": [
-    {
-      "name": "Pizza Ovens",
-      "listing_group_filter": {
-        "dimension": "product_type_level1",
-        "include": [
-          "pizza oven",
-          "pizza oven stand",
-          "pizza oven and cart"
-        ]
-      },
-      "feed_coverage": 244,
-      "dominant_brands": [
-        "chicago brick oven (214 SKUs)",
-        "primo ceramic grills (22 SKUs)"
-      ],
-      "rationale": "The single largest product cluster in the feed and the one the previous spec missed entirely. Chicago Brick Oven alone is 214 SKUs -- nearly a quarter of the catalog.",
-      "headlines": [
-        "Outdoor Pizza Ovens",
-        "Chicago Brick Oven Dealer",
-        "Authorized Dealer",
-        "No Tax & Free Shipping",
-        "Wood Fired Pizza Ovens",
-        "Speak To An Expert 24/7",
-        "Shop Pizza Ovens & Carts",
-        "Commercial Grade Products",
-        "Bundle & Save Big",
-        "Pro & Trade Accounts"
-      ],
-      "long_headlines": [
-        "Outdoor Pizza Ovens From Chicago Brick Oven & Primo \u2014 Authorized Dealer",
-        "Wood Fired & Gas Pizza Ovens With No Sales Tax And Free Shipping"
-      ],
-      "descriptions": [
-        "Call in to speak with a pizza oven expert today.",
-        "Authorized Chicago Brick Oven dealer. No sales tax and free shipping.",
-        "Wood fired and gas pizza ovens, stands and carts in stock.",
-        "Trade accounts available for contractors, designers and builders."
-      ],
-      "final_url": "https://betterpatio.com/pages/custom-outdoor-kitchens",
-      "final_url_note": "Custom kitchen funnel. Product ads in this asset group still route to their own product pages via the feed."
-    },
     {
       "name": "BBQ Islands & Outdoor Kitchens",
       "listing_group_filter": {
@@ -116,97 +75,6 @@
       ],
       "final_url": "https://betterpatio.com/pages/custom-outdoor-kitchens",
       "final_url_note": "Custom kitchen funnel. Product ads in this asset group still route to their own product pages via the feed."
-    },
-    {
-      "name": "Built-In & Freestanding Grills",
-      "listing_group_filter": {
-        "dimension": "product_type_level1",
-        "include": [
-          "bbq grill",
-          "freestanding grills"
-        ]
-      },
-      "feed_coverage": 182,
-      "dominant_brands": [
-        "summerset professional grills (66)",
-        "fire magic (55)",
-        "coyote outdoor living (44)",
-        "blaze (41)",
-        "bull (39)",
-        "rcs (78)",
-        "kokomo grills (5)",
-        "trueflame (6)"
-      ],
-      "rationale": "Feeds the brand SKAG search campaign. Every brand here is confirmed present in the feed, unlike the earlier draft.",
-      "headlines": [
-        "Built-In BBQ Grills",
-        "Authorized Dealer",
-        "No Tax & Free Shipping",
-        "Blaze, Bull & Fire Magic",
-        "Commercial Grade Grills",
-        "Speak To An Expert 24/7",
-        "Bundle & Save Big",
-        "Shop Built-In Gas Grills",
-        "Save Up To 25%",
-        "Pro & Trade Accounts"
-      ],
-      "long_headlines": [
-        "Built-In Gas Grills From Blaze, Bull, Fire Magic & Coyote \u2014 Authorized Dealer",
-        "Commercial-Grade Built-In BBQ Grills With No Sales Tax And Free Shipping"
-      ],
-      "descriptions": [
-        "Call in to speak with an expert and bundle your package.",
-        "Authorized dealer for Blaze, Bull, Fire Magic and Coyote. No tax, free shipping.",
-        "Extensive inventory of residential and commercial-grade built-in grills.",
-        "Trade accounts available for contractors, designers and builders."
-      ],
-      "final_url": "https://betterpatio.com/pages/custom-outdoor-kitchens",
-      "final_url_note": "Custom kitchen funnel. Product ads in this asset group still route to their own product pages via the feed."
-    },
-    {
-      "name": "Outdoor Kitchen Components",
-      "listing_group_filter": {
-        "dimension": "product_type_level1",
-        "include": [
-          "doors & drawers",
-          "bbq accessory - power burner",
-          "griddles",
-          "refrigeration",
-          "grill insulating liners"
-        ]
-      },
-      "feed_coverage": 134,
-      "dominant_brands": [
-        "rcs",
-        "le griddle (27)",
-        "trueflame",
-        "summerset professional grills"
-      ],
-      "rationale": "Higher-margin attachment products that support the 'Bundle & Save' angle already running in their live ads. Lower search intent individually, but strong basket-builders alongside island and grill purchases.",
-      "headlines": [
-        "Outdoor Kitchen Components",
-        "Access Doors & Drawers",
-        "Outdoor Refrigeration",
-        "No Tax & Free Shipping",
-        "Authorized Dealer",
-        "Le Griddle & TrueFlame",
-        "Speak To An Expert 24/7",
-        "Bundle & Save Big",
-        "Commercial Grade Products",
-        "Pro & Trade Accounts"
-      ],
-      "long_headlines": [
-        "Outdoor Kitchen Doors, Drawers, Griddles & Refrigeration \u2014 Authorized Dealer",
-        "Build Out Your Outdoor Kitchen With No Sales Tax And Free Shipping"
-      ],
-      "descriptions": [
-        "Call in to complete your outdoor kitchen build.",
-        "Access doors, drawers, griddles, power burners and refrigeration in stock.",
-        "Bundle components with your island or grill and save.",
-        "Trade accounts available for contractors, designers and builders."
-      ],
-      "final_url": "https://betterpatio.com/pages/custom-outdoor-kitchens",
-      "final_url_note": "Custom kitchen funnel. Product ads in this asset group still route to their own product pages via the feed."
     }
   ],
   "feed_coverage_summary": {
@@ -227,8 +95,7 @@
     "warning": "Real product photography only. The ad standards are explicit that stock or AI-generated imagery reduces trust and CTR -- skip an asset rather than degrade it."
   },
   "blockers_before_enabling": [
-    "Images for 2 of 4 asset groups \u2014 Pizza Ovens and Outdoor Kitchen Components have no matching existing set. Islands/Kitchens and Grills can be populated from existing account assets today.",
-    "Conversion tracking for PURCHASES \u2014 still not firing. Does not block the funnel path, which converts on lead form submission and is working.",
+    "Conversion tracking for PURCHASES \u2014 still not firing. Does not block the funnel path (lead form submission), which is working.",
     "95 feed products (~10%) carry no brand value and are invisible to brand-based targeting."
   ],
   "resolved_blockers": [
@@ -268,6 +135,18 @@
       "~580 image assets in the account are not attached to any asset group. They likely cover the gaps, but filenames are camera originals (DSC06701.jpg) so subject matter cannot be determined without viewing them. Trevor can eyeball these in the Google Ads asset library quickly.",
       "Two brand-neutral sets exist and may serve as generic fallback: '$5k Max / Asset Group 1' (21 images) and 'Sales-Performance Max-1 / Asset Group 1' (9 images).",
       "Google Ads can auto-generate assets from the landing page ('automatically created assets'). Available, but the ad standards warn it degrades trust and CTR -- acceptable only as a stopgap on a paused test."
-    ]
+    ],
+    "status": "RESOLVED \u2014 this asset group is fully covered by existing account assets: 'Better Patio - PMax / Cal Flame' (48 images, most complete set in the account), 'Performance Max | Cal Flame / betterpatio' (23), 'Mont Alpi Max / Mont Alpi' (19), 'Cal Flame Max / Asset Group 1' (11). No new photography required."
+  },
+  "scope_decision": {
+    "focus": "Outdoor kitchens only. One asset group, 218 SKUs.",
+    "dropped": [
+      "Pizza Ovens",
+      "Built-In & Freestanding Grills",
+      "Outdoor Kitchen Components"
+    ],
+    "reason": "Trevor's call. The dropped groups had no matching image assets in the account (Pizza Ovens, Outdoor Kitchen Components) or only partial coverage (Built-In & Freestanding Grills -- Summerset only). Rather than launch asset groups with weak or borrowed imagery, PMax focuses on the one group with complete brand-matched image sets already in the account.",
+    "coherence": "Also aligns the whole account on a single strategy: Search drives the custom kitchen funnel, PMax pushes kitchen products, Shopping covers the rest of the catalogue.",
+    "revisit": "Pizza Ovens is the largest cluster in the feed (244 SKUs, Chicago Brick Oven alone 214). Worth reinstating as soon as imagery exists -- it is the biggest untapped opportunity in the account."
   }
 }
