@@ -146,30 +146,108 @@
     "evidence_collections_dont_convert": "3 enabled Search campaigns point exclusively at collection pages and produced ZERO conversions on $834.81/mo combined: BP S1 Categories Search ($231.15), BP S2 Brands Search ($441.37), BP S3 Brands Expansion ($162.29).",
     "dropped_grill_skags": "blaze grill / bull grill / fire magic grill / coyote gas grill removed from Search. They are product-specific intent, which Shopping and PMax now own with real product listings. Keeping them in Search would compete with our own Shopping ads on the same queries."
   },
-  "campaigns_to_pause": [
-    {
-      "name": "BP S1: Categories Search",
-      "monthly_spend": 231.15,
-      "conversions": 0,
-      "reason": "all ads point at collection pages"
+  "cutover_plan": {
+    "critical": "The account currently has 12 ENABLED campaigns totalling $392/day in budget capacity. Launching the new build without pausing them would leave the account at $542/day and put new campaigns in direct competition with old ones on the same keywords and the same product feed.",
+    "rule": "Every campaign below is paused in the SAME operation that enables its replacement. Never both live at once.",
+    "current_state": {
+      "enabled_campaigns": 12,
+      "daily_budget_capacity": 392.0,
+      "monthly_spend": 4699.32,
+      "campaigns_producing_conversions": 2,
+      "spend_on_zero_conversion_campaigns": 3271.04
     },
-    {
-      "name": "BP S2: Brands Search",
-      "monthly_spend": 441.37,
-      "conversions": 0,
-      "reason": "all ads point at collection pages"
+    "disposition": [
+      {
+        "campaign": "Build Your Own Outdoor Kitchen Campaign",
+        "budget": 45.0,
+        "conv": 11.0,
+        "action": "PAUSE \u2014 replaced",
+        "replaced_by": "BP \u00b7 Custom Kitchens \u2014 SKAG",
+        "note": "The account's only converting Search campaign, so this is the one carrying real risk. The replacement targets the SAME funnel with proper SKAG structure, so running both would mean bidding against ourselves on identical kitchen terms. If Trevor prefers caution, the alternative is to leave this live for 2 weeks and launch the SKAG campaign alongside at reduced budget -- accepting some self-competition in exchange for not interrupting the one thing that works."
+      },
+      {
+        "campaign": "BP 2: Brands - All Brands",
+        "budget": 90.0,
+        "conv": 0.0,
+        "action": "PAUSE \u2014 replaced",
+        "replaced_by": "BP \u00b7 Shopping \u2014 Brand/Model"
+      },
+      {
+        "campaign": "BP 3: Products - All Brands",
+        "budget": 90.0,
+        "conv": 0.0,
+        "action": "PAUSE \u2014 replaced",
+        "replaced_by": "BP \u00b7 Shopping \u2014 Brand/Model"
+      },
+      {
+        "campaign": "BP 1: Generic - All Brands",
+        "budget": 90.0,
+        "conv": 0.0,
+        "action": "PAUSE \u2014 replaced",
+        "replaced_by": "BP \u00b7 Shopping \u2014 Brand/Model"
+      },
+      {
+        "campaign": "BP S2: Brands Search",
+        "budget": 15.0,
+        "conv": 0.0,
+        "action": "PAUSE \u2014 no replacement",
+        "reason": "all ads point at collection pages; zero conversions"
+      },
+      {
+        "campaign": "BP S1: Categories Search",
+        "budget": 8.0,
+        "conv": 0.0,
+        "action": "PAUSE \u2014 no replacement",
+        "reason": "all ads point at collection pages; zero conversions"
+      },
+      {
+        "campaign": "BP S3: Brands Expansion",
+        "budget": 25.0,
+        "conv": 0.0,
+        "action": "PAUSE \u2014 no replacement",
+        "reason": "all ads point at collection pages; zero conversions"
+      },
+      {
+        "campaign": "Dynamic Display Remarketing Ads",
+        "budget": 10.0,
+        "conv": 0.0,
+        "action": "PAUSE \u2014 no replacement",
+        "reason": "zero conversions on $291/mo; BP RT 2 is the remarketing that works"
+      },
+      {
+        "campaign": "BP RT 3: Demand Gen Warm",
+        "budget": 5.0,
+        "conv": 0.0,
+        "action": "PAUSE \u2014 no replacement",
+        "reason": "zero conversions on $148/mo"
+      },
+      {
+        "campaign": "BP RT 1: Warm Search",
+        "budget": 5.0,
+        "conv": 0.0,
+        "action": "PAUSE \u2014 no replacement",
+        "reason": "zero conversions; points at homepage"
+      },
+      {
+        "campaign": "BP RT 4: High-Intent Abandoners",
+        "budget": 4.0,
+        "conv": 0.0,
+        "action": "PAUSE \u2014 no replacement",
+        "reason": "zero conversions on $117/mo"
+      },
+      {
+        "campaign": "BP RT 2: Static Display Remarketing",
+        "budget": 5.0,
+        "conv": 6.0,
+        "action": "KEEP \u2014 raise budget to $10",
+        "reason": "best CPA in the account; the only retained campaign"
+      }
+    ],
+    "after_cutover": {
+      "enabled_campaigns": 4,
+      "daily_budget": 150.0,
+      "note": "1 retained (BP RT 2) + 3 new. 11 campaigns paused."
     },
-    {
-      "name": "BP S3: Brands Expansion",
-      "monthly_spend": 162.29,
-      "conversions": 0,
-      "reason": "all ads point at collection pages"
-    },
-    {
-      "name": "BP RT 1: Warm Search",
-      "monthly_spend": 144.09,
-      "conversions": 0,
-      "reason": "points at homepage; superseded by the funnel campaign"
-    }
-  ]
+    "already_paused": "~90 further campaigns are already paused or removed and cost nothing. Left alone deliberately -- the methodology says pause, never delete, and they carry historical data."
+  }
 }
