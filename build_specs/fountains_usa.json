@@ -1,0 +1,192 @@
+{
+  "account": "Fountains USA",
+  "account_id": "8148956333",
+  "status": "SPEC ONLY - NOT BUILT. Blocked on the funnel page (see blockers).",
+  "structure": "Two campaigns: PMax and dynamic display remarketing. No static remarketing and no Search, per Trevor - this account has no funnel page yet, so there is nowhere for a funnel-intent campaign to send traffic.",
+  "daily_budget_total": 20.0,
+  "budget_split": {
+    "pmax": 15.0,
+    "dynamic_remarketing": 5.0
+  },
+  "budget_concern": "Flagged once and overridden, which is Trevor's call. At a $2,300-$3,000 median product price the CPA is likely over $100, so $20/day buys roughly one conversion every 5+ days. PMax generally needs ~30 conversions in 30 days to leave the learning phase; at this budget it may never stabilise. Build it, but read early results as directional rather than conclusive.",
+  "geo_targeting": {
+    "states": [
+      {
+        "name": "California",
+        "geo_target_constant": "geoTargetConstants/21137",
+        "reach": 60600000
+      },
+      {
+        "name": "Arizona",
+        "geo_target_constant": "geoTargetConstants/21136",
+        "reach": 10000000
+      },
+      {
+        "name": "Texas",
+        "geo_target_constant": "geoTargetConstants/21176",
+        "reach": 50300000
+      },
+      {
+        "name": "Florida",
+        "geo_target_constant": "geoTargetConstants/21142",
+        "reach": 36700000
+      }
+    ],
+    "location_option": "PRESENCE",
+    "rationale": "Trevor's four buying states. Combined reach ~158M, so audience size is not the constraint at this budget."
+  },
+  "merchant_center": {
+    "merchant_id": 258983089,
+    "feed_health": "10,505 items, 10,146 in stock. Every item currently reads NOT_ELIGIBLE, but the reason is not_eligible_in_any_campaign -- all 25 campaigns are paused. That clears itself the moment a campaign runs. Genuine defects are small: 359 out of stock, 6 price mismatch, 5 missing image, 5 availability mismatch, 2 image pending crawl."
+  },
+  "brand_policy": {
+    "approach": "Include-only listing filter on four brands. Nothing outside them can serve, so no exclusion list is needed.",
+    "excluded_by_construction": {
+      "sunnydaze decor": "458 SKUs in feed. Trevor ranks page 1 organically and margin is lower.",
+      "smart living": "NOT PRESENT IN THE FEED. Closest match is 'smart solar' (117 SKUs). If Smart Living is a brand the store actually carries, it is missing from Merchant Center entirely -- worth checking.",
+      "other": "10 further brands in the feed get no coverage: fountains usa (1,718), phoenix precast (681), easy pro pond (383), travertine & more (336), smart solar (117), cameron harvey (109), yard bright (100), melrose international (73), adagio water features (60), aquascape (44)."
+    }
+  },
+  "campaigns": [
+    {
+      "name": "FUSA - PMax - Fountains",
+      "type": "PERFORMANCE_MAX",
+      "daily_budget": 15.0,
+      "bid_strategy": "MAXIMIZE_CONVERSIONS",
+      "merchant_id": 258983089,
+      "status_at_creation": "PAUSED",
+      "final_url_expansion": false,
+      "image_extraction": "OPTED_OUT",
+      "asset_groups": [
+        {
+          "name": "The Outdoor Plus",
+          "feed_brand_string": "the outdoor plus",
+          "in_stock_skus": 1188,
+          "price_low": 619.0,
+          "price_high": 32391.0,
+          "price_median": 2328.0,
+          "product_types": {
+            "water bowls": 664,
+            "scuppers": 136,
+            "fire & water bowls": 126,
+            "fire & water fountains": 126,
+            "planter & water bowls": 80,
+            "rainfall water fountains": 56
+          }
+        },
+        {
+          "name": "Giannini Garden",
+          "feed_brand_string": "giannini garden",
+          "in_stock_skus": 4917,
+          "price_low": 70.0,
+          "price_high": 18500.0,
+          "price_median": 3000.0,
+          "product_types": {
+            "outdoor fountains": 2675,
+            "fountains": 818,
+            "bird baths": 458,
+            "fountain ponds": 240,
+            "fountain foundations": 192,
+            "(blank)": 183,
+            "water spouts": 99,
+            "pond fountains": 96,
+            "replacement parts": 48,
+            "planters": 48,
+            "fountain spouts": 28,
+            "fountain basins": 14,
+            "basins": 8,
+            "fountain plates": 4,
+            "fountain accessories": 2,
+            "fountain basis": 2,
+            "large outdoor fountains": 2
+          }
+        },
+        {
+          "name": "Fiore Stone",
+          "feed_brand_string": "fiore stone",
+          "in_stock_skus": 289,
+          "price_low": 799.0,
+          "price_high": 27499.0,
+          "price_median": 2550.0,
+          "product_types": {
+            "fountains": 289
+          }
+        },
+        {
+          "name": "Metropolitan Galleries",
+          "feed_brand_string": "metropolitan galleries inc.",
+          "in_stock_skus": 22,
+          "price_low": 800.0,
+          "price_high": 18000.0,
+          "price_median": 3600.0,
+          "product_types": {
+            "fountains": 22
+          }
+        }
+      ],
+      "final_url": "PENDING - the quote funnel page does not exist yet"
+    },
+    {
+      "name": "FUSA - Dynamic Display Remarketing",
+      "type": "DISPLAY",
+      "daily_budget": 5.0,
+      "bid_strategy": "MAXIMIZE_CONVERSIONS",
+      "merchant_id": 258983089,
+      "dynamic_remarketing": true,
+      "status_at_creation": "PAUSED",
+      "optimized_targeting": false,
+      "audiences": [
+        {
+          "id": 9187533874,
+          "name": "Product viewers (Retail)",
+          "size": 1500
+        },
+        {
+          "id": 9204844723,
+          "name": "All Users of Fountains USA Shopify Store",
+          "size": 7600
+        },
+        {
+          "id": 9187533877,
+          "name": "Shopping cart abandoners (Retail)",
+          "size": 16
+        }
+      ],
+      "destination": "Product pages via the Merchant Center feed"
+    }
+  ],
+  "conversion_tracking": {
+    "status": "HEALTHY - unlike BetterPatio. Purchase is ENABLED and primary_for_goal=true, so Maximize Conversions optimises against real orders rather than form fills.",
+    "secondary": [
+      "Add To Cart",
+      "Begin Checkout"
+    ]
+  },
+  "assets": {
+    "images_in_account": 87,
+    "by_shape": {
+      "square_1x1": 45,
+      "landscape_1.91": 19,
+      "portrait_4x5": 16,
+      "other": 7
+    },
+    "concern": "Thin, and none are brand-matched. BetterPatio had 766. Four asset groups can meet the PMax minimums from this pool, but the imagery will be generic rather than showing each brand's own fountains. Pulling brand images from the store would fix it, and needs store access."
+  },
+  "blockers": [
+    {
+      "blocker": "No quote funnel page on fountainsusa.com",
+      "impact": "PMax asset groups need a final URL for every non-Shopping placement. The only URL in use anywhere in the account is the homepage, which Trevor's landing page policy rules out. Trevor chose to build the funnel page before launching.",
+      "owner": "Trevor / a session with store access"
+    },
+    {
+      "blocker": "fountainsusa.com is unreachable from this environment",
+      "detail": "Blocked by the network egress proxy, with and without www, same as betterpatio.com. The quote-request-home-page skill requires pulling real collection URLs, product URLs, CDN image URLs and the logo from the live store and verifying each returns 200. That cannot be done from here.",
+      "unblock_options": [
+        "Connect the Fountains USA store to the Shopify connector (it is currently pointed at Ecommerce Paradise). Gives products, collections, images, pages and the contact form directly, no web access needed. Best option, and it also unblocks brand imagery.",
+        "Paste the nav structure, brand collection URLs, logo URL and contact details.",
+        "Allow the domain in the environment's network policy."
+      ]
+    }
+  ],
+  "ready_to_execute": "Everything except the funnel URL is settled: brand strings verified against the live feed, geo constants resolved, audiences identified, budgets set. Once the funnel URL exists this is a single build script."
+}
