@@ -8,11 +8,12 @@
   "all_campaigns_created_paused": true,
   "campaigns": [
     {
-      "name": "BP \u00b7 Outdoor Kitchens \u2014 SKAG",
+      "name": "BP \u00b7 Custom Kitchens \u2014 SKAG",
       "type": "SEARCH",
-      "daily_budget": 40.0,
+      "daily_budget": 45.0,
       "bid_strategy": "MAXIMIZE_CONVERSIONS",
-      "rationale": "Rebuilds the ONLY campaign in the account that converts (Build Your Own Outdoor Kitchen: 11 conv, $120 CPA). Highest-value category and the clearest buyer intent.",
+      "final_url": "https://betterpatio.com/pages/custom-outdoor-kitchens",
+      "rationale": "The ONLY converting pattern in the account. Every SKAG points at the custom kitchen funnel and converts on lead form submission -- the one conversion action still firing (18/30d). Measurable today without waiting on the purchase pixel.",
       "skags": [
         {
           "keyword": "outdoor kitchens near me",
@@ -22,10 +23,9 @@
           "bid_high": 11.0,
           "note": "Highest purchase intent in the entire dataset -- 'near me' plus category",
           "landing_page": {
-            "item_id": "shopify_US_783951069303_8687423029367",
-            "product": "Cal Flame 11 Foot Grand Pavilion Customizable BBQ Island",
-            "price": 8499,
-            "url": "NEEDED \u2014 supply from Merchant Center feed 'link' column"
+            "url": "https://betterpatio.com/pages/custom-outdoor-kitchens",
+            "type": "custom_kitchen_sales_funnel",
+            "converts_on": "lead form submission"
           }
         },
         {
@@ -35,10 +35,9 @@
           "bid_low": 1.41,
           "bid_high": 6.72,
           "landing_page": {
-            "item_id": "shopify_US_6890106781864_42697916711153",
-            "product": "Mont Alpi 10 Foot Black Stainless Steel BBQ Island",
-            "price": 7998,
-            "url": "NEEDED \u2014 supply from Merchant Center feed 'link' column"
+            "url": "https://betterpatio.com/pages/custom-outdoor-kitchens",
+            "type": "custom_kitchen_sales_funnel",
+            "converts_on": "lead form submission"
           }
         },
         {
@@ -48,10 +47,9 @@
           "bid_low": 1.41,
           "bid_high": 6.72,
           "landing_page": {
-            "item_id": "shopify_US_6890106781864_42697916711153",
-            "product": "Mont Alpi 10 Foot Black Stainless Steel BBQ Island",
-            "price": 7998,
-            "url": "NEEDED \u2014 supply from Merchant Center feed 'link' column"
+            "url": "https://betterpatio.com/pages/custom-outdoor-kitchens",
+            "type": "custom_kitchen_sales_funnel",
+            "converts_on": "lead form submission"
           }
         },
         {
@@ -61,10 +59,9 @@
           "bid_low": 1.55,
           "bid_high": 7.05,
           "landing_page": {
-            "item_id": "shopify_US_783951069303_8687423029367",
-            "product": "Cal Flame 11 Foot Grand Pavilion Customizable BBQ Island",
-            "price": 8499,
-            "url": "NEEDED \u2014 supply from Merchant Center feed 'link' column"
+            "url": "https://betterpatio.com/pages/custom-outdoor-kitchens",
+            "type": "custom_kitchen_sales_funnel",
+            "converts_on": "lead form submission"
           }
         },
         {
@@ -74,73 +71,9 @@
           "bid_low": 1.42,
           "bid_high": 8.1,
           "landing_page": {
-            "item_id": "shopify_US_783951069303_8687423029367",
-            "product": "Cal Flame 11 Foot Grand Pavilion Customizable BBQ Island",
-            "price": 8499,
-            "url": "NEEDED \u2014 supply from Merchant Center feed 'link' column"
-          }
-        }
-      ]
-    },
-    {
-      "name": "BP \u00b7 Grills by Brand \u2014 SKAG",
-      "type": "SEARCH",
-      "daily_budget": 30.0,
-      "bid_strategy": "MAXIMIZE_CONVERSIONS",
-      "rationale": "Brand terms carry lower CPCs than category terms and higher purchase intent -- someone searching a specific brand has already chosen. Limited to 5 SKAGs so each gets enough budget to gather data.",
-      "skags": [
-        {
-          "keyword": "blaze grill",
-          "match": "PHRASE",
-          "monthly_searches": 14800,
-          "bid_low": 0.84,
-          "bid_high": 7.02,
-          "note": "Best volume-to-cost ratio of any brand term",
-          "landing_page": {
-            "item_id": "shopify_US_8711391379697_45801005514993",
-            "product": "Blaze Premium LTE+ Marine Grade 32-Inch 4-Burner",
-            "price": 3999,
-            "url": "NEEDED \u2014 supply from Merchant Center feed 'link' column"
-          }
-        },
-        {
-          "keyword": "coyote gas grill",
-          "match": "PHRASE",
-          "monthly_searches": 5400,
-          "bid_low": 0.99,
-          "bid_high": 5.56,
-          "note": "QUALIFIED deliberately -- bare 'coyote grill' pulls restaurant traffic",
-          "landing_page": {
-            "item_id": "shopify_US_7592792654065_42539660247281",
-            "product": "Coyote Outdoor 30 SL-Series Grill",
-            "price": 3500,
-            "url": "NEEDED \u2014 supply from Merchant Center feed 'link' column"
-          }
-        },
-        {
-          "keyword": "bull grill",
-          "match": "PHRASE",
-          "monthly_searches": 4400,
-          "bid_low": 0.64,
-          "bid_high": 4.51,
-          "landing_page": {
-            "item_id": "shopify_US_910125635_42274568339697",
-            "product": "Bull Angus 30-Inch Drop In Grill with Four Burners",
-            "price": 2839,
-            "url": "NEEDED \u2014 supply from Merchant Center feed 'link' column"
-          }
-        },
-        {
-          "keyword": "fire magic grill",
-          "match": "PHRASE",
-          "monthly_searches": 2900,
-          "bid_low": 0.79,
-          "bid_high": 5.89,
-          "landing_page": {
-            "item_id": "shopify_US_4519144915084_44194373042417",
-            "product": "Fire Magic E790i Echelon Diamond 36-Inch Built-In",
-            "price": 10226,
-            "url": "NEEDED \u2014 supply from Merchant Center feed 'link' column"
+            "url": "https://betterpatio.com/pages/custom-outdoor-kitchens",
+            "type": "custom_kitchen_sales_funnel",
+            "converts_on": "lead form submission"
           }
         },
         {
@@ -151,10 +84,9 @@
           "bid_high": 13.77,
           "note": "Highest bid range in the set -- expensive but signals high order value",
           "landing_page": {
-            "item_id": "shopify_US_6890106781864_42697916711153",
-            "product": "Mont Alpi 10 Foot Black Stainless Steel BBQ Island",
-            "price": 7998,
-            "url": "NEEDED \u2014 supply from Merchant Center feed 'link' column"
+            "url": "https://betterpatio.com/pages/custom-outdoor-kitchens",
+            "type": "custom_kitchen_sales_funnel",
+            "converts_on": "lead form submission"
           }
         }
       ]
@@ -162,43 +94,36 @@
     {
       "name": "BP \u00b7 Shopping \u2014 Brand/Model",
       "type": "SHOPPING",
-      "daily_budget": 35.0,
+      "daily_budget": 50.0,
       "bid_strategy": "MANUAL_CPC",
-      "rationale": "Shopping is how ecommerce sells, but the three existing Shopping campaigns burned $1,686/mo for zero recorded conversions. Restarting as ONE measured tier instead of three, at a fraction of prior spend, until it proves itself.",
       "priority": "LOW",
-      "note": "Single tier deliberately. The generic/brand/model ladder gets rebuilt only once this one demonstrates it converts.",
-      "merchant_id": 101451631
+      "merchant_id": 101451631,
+      "rationale": "Owns ALL product-specific traffic per Trevor's direction. Destination URLs come from the feed, so every click lands on a product page. Budget raised from $35 now that it absorbs the brand/product intent formerly handled by Search."
+    },
+    {
+      "name": "BP \u00b7 PMax \u2014 Retail Feed",
+      "type": "PERFORMANCE_MAX",
+      "daily_budget": 45.0,
+      "bid_strategy": "MAXIMIZE_CONVERSIONS",
+      "merchant_id": 101451631,
+      "spec_file": "build_specs/betterpatio_pmax.json",
+      "rationale": "Second product channel. Feed-driven, so product ads route to product pages automatically. 4 asset groups covering 778 of 894 eligible SKUs."
     },
     {
       "name": "BP RT \u00b7 Display Remarketing",
       "type": "DISPLAY",
       "daily_budget": 10.0,
       "bid_strategy": "MAXIMIZE_CONVERSIONS",
-      "rationale": "RETAINED, not rebuilt. Existing BP RT 2 delivers the best CPA in the account -- 7 conversions at $21 on just $147/mo. It was budget-starved at $5/day; this is a modest increase.",
-      "action": "keep_existing_raise_budget"
-    },
-    {
-      "name": "BP \u00b7 PMax \u2014 Retail Feed",
-      "type": "PERFORMANCE_MAX",
-      "daily_budget": 35.0,
-      "bid_strategy": "MAXIMIZE_CONVERSIONS",
-      "rationale": "Retail PMax linked to the live Merchant Center feed (101451631) so product ads route to real product page URLs. Four asset groups filtered by actual feed product types, covering 778 of 894 eligible SKUs.",
-      "spec_file": "build_specs/betterpatio_pmax.json",
-      "merchant_id": 101451631
+      "action": "keep_existing_raise_budget",
+      "rationale": "RETAINED. Best CPA in the account -- 7 conversions at $21 on $147/mo, budget-starved at $5/day."
     }
   ],
   "budget_allocation_check": {
-    "outdoor_kitchens": 40.0,
-    "grills_by_brand": 30.0,
-    "shopping": 35.0,
-    "pmax_brand_clusters": 35.0,
+    "custom_kitchens_search": 45.0,
+    "shopping": 50.0,
+    "pmax": 45.0,
     "remarketing": 10.0,
     "total": 150.0
-  },
-  "pmax_decision": {
-    "included": true,
-    "note": "Included at Trevor's explicit direction after being advised that PMax optimizes toward a conversion signal this account does not currently record. Created paused; confirm the purchase pixel fires before enabling.",
-    "daily_budget": 35.0
   },
   "required_negatives": {
     "note": "Campaign-level negatives beyond the shared universal list, driven by what the keyword data exposed.",
@@ -241,13 +166,6 @@
       }
     ]
   },
-  "excluded_from_build": [
-    {
-      "term": "outdoor kitchen",
-      "monthly_searches": 60500,
-      "reason": "Their single largest wasted line item -- $199 spend, 43 clicks, zero conversions. At 60,500/mo and $2.11-7.16 CPC it would dominate the $70/day allocated to Search and crowd out the terms that actually convert. Still excluded at $150/day; revisit once conversion tracking works and the SKAGs have proven their CPA."
-    }
-  ],
   "settings": {
     "location_targeting": "United States",
     "location_option": "PRESENCE",
@@ -260,11 +178,36 @@
     "status_at_creation": "PAUSED"
   },
   "landing_page_policy": {
-    "rule": "ADS POINT AT PRODUCT PAGES ONLY. Collection pages are reserved for organic traffic.",
-    "reason": "Trevor's direction based on account experience -- collection pages convert poorly on paid. Consistent with the catalog: hero products run $2.8k-$10k, so a product page with price, specs and a quote/financing CTA outperforms a grid that creates choice paralysis.",
-    "shopping_and_pmax": "No action needed. Retail Shopping and PMax product ads pull destination URLs from the Merchant Center feed automatically, which already resolve to product pages.",
-    "search_skags": "Each SKAG points at the hero product for its term, selected below from live feed data.",
-    "selection_method": "Filtered by brand AND product_type together, then took the median-priced item. Filtering by brand alone surfaced accessories -- the cheapest 'blaze' item is an insulated jacket and the cheapest 'coyote' is a pull-out drawer. Sending a grill searcher to a grill cover would fail silently.",
-    "blocker": "The Google Ads API exposes shopping_product.item_id but NO product URL field. betterpatio.com is blocked by this environment's network policy, and the Shopify connector is authorized to Trevor's own store, not BetterPatio. Product page URLs must come from Trevor."
-  }
+    "model": "PMax + Shopping -> product pages (from feed). Search -> custom kitchen funnel. Retargeting -> retained. Nothing points at collections.",
+    "funnel_url": "https://betterpatio.com/pages/custom-outdoor-kitchens",
+    "funnel_url_source": "VERIFIED \u2014 live final URL on 'Build Your Own Outdoor Kitchen Campaign', the account's only converting campaign.",
+    "evidence_collections_dont_convert": "3 enabled Search campaigns point exclusively at collection pages and produced ZERO conversions on $834.81/mo combined: BP S1 Categories Search ($231.15), BP S2 Brands Search ($441.37), BP S3 Brands Expansion ($162.29).",
+    "dropped_grill_skags": "blaze grill / bull grill / fire magic grill / coyote gas grill removed from Search. They are product-specific intent, which Shopping and PMax now own with real product listings. Keeping them in Search would compete with our own Shopping ads on the same queries."
+  },
+  "campaigns_to_pause": [
+    {
+      "name": "BP S1: Categories Search",
+      "monthly_spend": 231.15,
+      "conversions": 0,
+      "reason": "all ads point at collection pages"
+    },
+    {
+      "name": "BP S2: Brands Search",
+      "monthly_spend": 441.37,
+      "conversions": 0,
+      "reason": "all ads point at collection pages"
+    },
+    {
+      "name": "BP S3: Brands Expansion",
+      "monthly_spend": 162.29,
+      "conversions": 0,
+      "reason": "all ads point at collection pages"
+    },
+    {
+      "name": "BP RT 1: Warm Search",
+      "monthly_spend": 144.09,
+      "conversions": 0,
+      "reason": "points at homepage; superseded by the funnel campaign"
+    }
+  ]
 }
