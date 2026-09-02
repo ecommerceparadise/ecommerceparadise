@@ -106,7 +106,8 @@
       "bid_strategy": "MANUAL_CPC",
       "rationale": "Shopping is how ecommerce sells, but the three existing Shopping campaigns burned $1,686/mo for zero recorded conversions. Restarting as ONE measured tier instead of three, at a fraction of prior spend, until it proves itself.",
       "priority": "LOW",
-      "note": "Single tier deliberately. The generic/brand/model ladder gets rebuilt only once this one demonstrates it converts."
+      "note": "Single tier deliberately. The generic/brand/model ladder gets rebuilt only once this one demonstrates it converts.",
+      "merchant_id": 101451631
     },
     {
       "name": "BP RT \u00b7 Display Remarketing",
@@ -117,12 +118,13 @@
       "action": "keep_existing_raise_budget"
     },
     {
-      "name": "BP \u00b7 PMax \u2014 Brand Clusters",
+      "name": "BP \u00b7 PMax \u2014 Retail Feed",
       "type": "PERFORMANCE_MAX",
       "daily_budget": 35.0,
       "bid_strategy": "MAXIMIZE_CONVERSIONS",
-      "rationale": "Trevor's chosen PMax + SKAG hybrid. Four asset groups clustered by category. Full asset spec in build_specs/betterpatio_pmax.json.",
-      "spec_file": "build_specs/betterpatio_pmax.json"
+      "rationale": "Retail PMax linked to the live Merchant Center feed (101451631) so product ads route to real product page URLs. Four asset groups filtered by actual feed product types, covering 778 of 894 eligible SKUs.",
+      "spec_file": "build_specs/betterpatio_pmax.json",
+      "merchant_id": 101451631
     }
   ],
   "budget_allocation_check": {
