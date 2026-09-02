@@ -1,10 +1,12 @@
 """Build the Fountains USA dynamic display remarketing campaign. Dry run unless --live.
 
-Products come from the Merchant Center feed and are constrained to Trevor's four
-brands by a campaign-level listing_scope, so a visitor who browsed an excluded
-brand cannot be followed with it. Optimized targeting is OFF: left on, Google
-serves past the remarketing lists to people who never visited, which is the
-opposite of remarketing and is what was quietly draining the BetterPatio account.
+Runs against the entire Merchant Center feed. Dynamic remarketing shows each
+visitor the products they actually viewed, so the brand mix follows their
+browsing rather than a filter.
+
+Optimized targeting is OFF. Left on, Google serves past the remarketing lists to
+people who never visited the site, which is the opposite of remarketing and is
+what was quietly draining the BetterPatio account.
 """
 import argparse, sys
 from google_ads.auth import get_client
@@ -15,7 +17,6 @@ BUDGET_MICROS = 5_000_000
 STORE_URL = "https://www.fountainsusa.com"
 STATES = ["geoTargetConstants/21137", "geoTargetConstants/21136",
           "geoTargetConstants/21176", "geoTargetConstants/21142"]
-BRANDS = ["the outdoor plus", "giannini garden", "fiore stone", "metropolitan galleries inc."]
 AUDIENCES = [9187533874,   # Product viewers (Retail)
              9204844723,   # All Users of Fountains USA Shopify Store
              9187533877]   # Shopping cart abandoners (Retail)
@@ -58,7 +59,7 @@ camp_rn = f"customers/{CID}/campaigns/{nxt()}"
 c = op().campaign_operation.create
 c.resource_name = camp_rn
 c.name = "FUSA - Dynamic Display Remarketing"
-c.status = e.CampaignStatusEnum.PAUSED
+c.status = e.CampaignStatusEnum.ENABLED
 c.advertising_channel_type = e.AdvertisingChannelTypeEnum.DISPLAY
 c.campaign_budget = budget_rn
 c.maximize_conversions = client.get_type("MaximizeConversions")
@@ -74,12 +75,12 @@ for g in STATES:
     cc.location.geo_target_constant = g
     cc.negative = False
 
-# Constrain the feed to Trevor's four brands at campaign level.
-scope = op().campaign_criterion_operation.create
-scope.campaign = camp_rn
-d = client.get_type("ListingDimensionInfo")
-d.product_brand.value = BRANDS[0]
-scope.listing_scope.dimensions.append(d)
+# No brand scope. Dynamic remarketing runs against the whole feed and picks the
+# products each visitor actually viewed, so the brand mix follows their browsing
+# rather than a filter. Google does not support scoping a Display campaign to a
+# set of brands anyway: listing_scope takes one value per dimension type, negative
+# criteria reject listing_scope outright, and Display ad groups reject listing
+# groups (OPERATION_NOT_PERMITTED_FOR_CONTEXT).
 
 ag_rn = f"customers/{CID}/adGroups/{nxt()}"
 ag = op().ad_group_operation.create
@@ -120,9 +121,9 @@ req.customer_id = CID
 req.mutate_operations.extend(ops)
 req.validate_only = not args.live
 print(f"{'LIVE' if args.live else 'DRY RUN'}: {len(ops)} operations")
-print(f"  campaign  FUSA - Dynamic Display Remarketing  ${BUDGET_MICROS/1e6:,.0f}/day  PAUSED")
+print(f"  campaign  FUSA - Dynamic Display Remarketing  ${BUDGET_MICROS/1e6:,.0f}/day  ENABLED")
 print(f"  geo       CA, AZ, TX, FL  PRESENCE")
-print(f"  feed      {MERCHANT_ID}, scoped to {len(BRANDS)} brands")
+print(f"  feed      {MERCHANT_ID}, entire feed (dynamic remarketing)")
 print(f"  audiences {len(AUDIENCES)}   optimized_targeting=False")
 print(f"  ad        {len(HEADLINES)} headlines, {len(DESCRIPTIONS)} descriptions, "
       f"{len(MARKETING)+len(SQUARE)} images")
