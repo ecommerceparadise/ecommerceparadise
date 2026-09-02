@@ -227,12 +227,47 @@
     "warning": "Real product photography only. The ad standards are explicit that stock or AI-generated imagery reduces trust and CTR -- skip an asset rather than degrade it."
   },
   "blockers_before_enabling": [
-    "Images per asset group \u2014 betterpatio.com is unreachable from this environment (403 at the network proxy), so site imagery could not be pulled. Merchant Center images cover Shopping placements automatically, but asset groups need their own for the rest.",
-    "Conversion tracking for PURCHASES \u2014 still not firing. Note this no longer blocks measurement of the funnel path, which converts on lead form submission and is working.",
+    "Images for 2 of 4 asset groups \u2014 Pizza Ovens and Outdoor Kitchen Components have no matching existing set. Islands/Kitchens and Grills can be populated from existing account assets today.",
+    "Conversion tracking for PURCHASES \u2014 still not firing. Does not block the funnel path, which converts on lead form submission and is working.",
     "95 feed products (~10%) carry no brand value and are invisible to brand-based targeting."
   ],
   "resolved_blockers": [
     "Product page URLs \u2014 NO LONGER NEEDED. Shopping and PMax product ads pull URLs from the feed automatically; every non-Shopping placement now points at the known funnel URL. The Merchant Center export is no longer required for this build.",
     "Collection page URLs \u2014 NO LONGER NEEDED. Nothing in the build points at a collection."
-  ]
+  ],
+  "images": {
+    "finding": "No need to source new imagery. The account already holds 766 image assets -- real DSLR product photography (7952x5304 originals), already cropped to PMax ratios (576 square 1:1, 86 landscape 1.91:1, 41 portrait 4:5). Assets are account-level resources, so existing ones attach directly to new asset groups.",
+    "limitation": "The image host (tpc.googlesyndication.com) is blocked by this environment's network proxy, so images could not be viewed. Matching is by existing attachment only, not by visual inspection.",
+    "reusable_sets": {
+      "BBQ Islands & Outdoor Kitchens": {
+        "status": "COVERED",
+        "sources": [
+          "'Better Patio - PMax / Cal Flame' \u2014 48 images (16 ad, 12 marketing, 14 square, 5 portrait, 1 logo). Most complete set in the account.",
+          "'Performance Max | Cal Flame / betterpatio' \u2014 23 images",
+          "'Mont Alpi Max / Mont Alpi' \u2014 19 images",
+          "'Cal Flame Max / Asset Group 1' \u2014 11 images"
+        ]
+      },
+      "Built-In & Freestanding Grills": {
+        "status": "PARTIAL",
+        "sources": [
+          "'Performance Max | Summerset / Summerset' \u2014 21 images (complete set)"
+        ],
+        "gap": "No brand-specific sets for Blaze, Bull, Fire Magic, Coyote or RCS."
+      },
+      "Pizza Ovens": {
+        "status": "GAP",
+        "gap": "No Chicago Brick Oven asset group exists, despite CBO being 214 SKUs -- the largest brand in the feed."
+      },
+      "Outdoor Kitchen Components": {
+        "status": "GAP",
+        "gap": "No matching asset group."
+      }
+    },
+    "fallback_options": [
+      "~580 image assets in the account are not attached to any asset group. They likely cover the gaps, but filenames are camera originals (DSC06701.jpg) so subject matter cannot be determined without viewing them. Trevor can eyeball these in the Google Ads asset library quickly.",
+      "Two brand-neutral sets exist and may serve as generic fallback: '$5k Max / Asset Group 1' (21 images) and 'Sales-Performance Max-1 / Asset Group 1' (9 images).",
+      "Google Ads can auto-generate assets from the landing page ('automatically created assets'). Available, but the ad standards warn it degrades trust and CTR -- acceptable only as a stopgap on a paused test."
+    ]
+  }
 }
