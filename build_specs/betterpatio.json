@@ -20,35 +20,65 @@
           "monthly_searches": 3600,
           "bid_low": 2.88,
           "bid_high": 11.0,
-          "note": "Highest purchase intent in the entire dataset -- 'near me' plus category"
+          "note": "Highest purchase intent in the entire dataset -- 'near me' plus category",
+          "landing_page": {
+            "item_id": "shopify_US_783951069303_8687423029367",
+            "product": "Cal Flame 11 Foot Grand Pavilion Customizable BBQ Island",
+            "price": 8499,
+            "url": "NEEDED \u2014 supply from Merchant Center feed 'link' column"
+          }
         },
         {
           "keyword": "modular outdoor kitchen",
           "match": "PHRASE",
           "monthly_searches": 12100,
           "bid_low": 1.41,
-          "bid_high": 6.72
+          "bid_high": 6.72,
+          "landing_page": {
+            "item_id": "shopify_US_6890106781864_42697916711153",
+            "product": "Mont Alpi 10 Foot Black Stainless Steel BBQ Island",
+            "price": 7998,
+            "url": "NEEDED \u2014 supply from Merchant Center feed 'link' column"
+          }
         },
         {
           "keyword": "prefab outdoor kitchen",
           "match": "PHRASE",
           "monthly_searches": 12100,
           "bid_low": 1.41,
-          "bid_high": 6.72
+          "bid_high": 6.72,
+          "landing_page": {
+            "item_id": "shopify_US_6890106781864_42697916711153",
+            "product": "Mont Alpi 10 Foot Black Stainless Steel BBQ Island",
+            "price": 7998,
+            "url": "NEEDED \u2014 supply from Merchant Center feed 'link' column"
+          }
         },
         {
           "keyword": "outdoor kitchen island",
           "match": "PHRASE",
           "monthly_searches": 8100,
           "bid_low": 1.55,
-          "bid_high": 7.05
+          "bid_high": 7.05,
+          "landing_page": {
+            "item_id": "shopify_US_783951069303_8687423029367",
+            "product": "Cal Flame 11 Foot Grand Pavilion Customizable BBQ Island",
+            "price": 8499,
+            "url": "NEEDED \u2014 supply from Merchant Center feed 'link' column"
+          }
         },
         {
           "keyword": "bbq island",
           "match": "PHRASE",
           "monthly_searches": 3600,
           "bid_low": 1.42,
-          "bid_high": 8.1
+          "bid_high": 8.1,
+          "landing_page": {
+            "item_id": "shopify_US_783951069303_8687423029367",
+            "product": "Cal Flame 11 Foot Grand Pavilion Customizable BBQ Island",
+            "price": 8499,
+            "url": "NEEDED \u2014 supply from Merchant Center feed 'link' column"
+          }
         }
       ]
     },
@@ -65,7 +95,13 @@
           "monthly_searches": 14800,
           "bid_low": 0.84,
           "bid_high": 7.02,
-          "note": "Best volume-to-cost ratio of any brand term"
+          "note": "Best volume-to-cost ratio of any brand term",
+          "landing_page": {
+            "item_id": "shopify_US_8711391379697_45801005514993",
+            "product": "Blaze Premium LTE+ Marine Grade 32-Inch 4-Burner",
+            "price": 3999,
+            "url": "NEEDED \u2014 supply from Merchant Center feed 'link' column"
+          }
         },
         {
           "keyword": "coyote gas grill",
@@ -73,21 +109,39 @@
           "monthly_searches": 5400,
           "bid_low": 0.99,
           "bid_high": 5.56,
-          "note": "QUALIFIED deliberately -- bare 'coyote grill' pulls restaurant traffic"
+          "note": "QUALIFIED deliberately -- bare 'coyote grill' pulls restaurant traffic",
+          "landing_page": {
+            "item_id": "shopify_US_7592792654065_42539660247281",
+            "product": "Coyote Outdoor 30 SL-Series Grill",
+            "price": 3500,
+            "url": "NEEDED \u2014 supply from Merchant Center feed 'link' column"
+          }
         },
         {
           "keyword": "bull grill",
           "match": "PHRASE",
           "monthly_searches": 4400,
           "bid_low": 0.64,
-          "bid_high": 4.51
+          "bid_high": 4.51,
+          "landing_page": {
+            "item_id": "shopify_US_910125635_42274568339697",
+            "product": "Bull Angus 30-Inch Drop In Grill with Four Burners",
+            "price": 2839,
+            "url": "NEEDED \u2014 supply from Merchant Center feed 'link' column"
+          }
         },
         {
           "keyword": "fire magic grill",
           "match": "PHRASE",
           "monthly_searches": 2900,
           "bid_low": 0.79,
-          "bid_high": 5.89
+          "bid_high": 5.89,
+          "landing_page": {
+            "item_id": "shopify_US_4519144915084_44194373042417",
+            "product": "Fire Magic E790i Echelon Diamond 36-Inch Built-In",
+            "price": 10226,
+            "url": "NEEDED \u2014 supply from Merchant Center feed 'link' column"
+          }
         },
         {
           "keyword": "mont alpi outdoor kitchen",
@@ -95,7 +149,13 @@
           "monthly_searches": 1600,
           "bid_low": 2.5,
           "bid_high": 13.77,
-          "note": "Highest bid range in the set -- expensive but signals high order value"
+          "note": "Highest bid range in the set -- expensive but signals high order value",
+          "landing_page": {
+            "item_id": "shopify_US_6890106781864_42697916711153",
+            "product": "Mont Alpi 10 Foot Black Stainless Steel BBQ Island",
+            "price": 7998,
+            "url": "NEEDED \u2014 supply from Merchant Center feed 'link' column"
+          }
         }
       ]
     },
@@ -198,5 +258,13 @@
     "auto_apply_recommendations": false,
     "ad_rotation": "OPTIMIZE",
     "status_at_creation": "PAUSED"
+  },
+  "landing_page_policy": {
+    "rule": "ADS POINT AT PRODUCT PAGES ONLY. Collection pages are reserved for organic traffic.",
+    "reason": "Trevor's direction based on account experience -- collection pages convert poorly on paid. Consistent with the catalog: hero products run $2.8k-$10k, so a product page with price, specs and a quote/financing CTA outperforms a grid that creates choice paralysis.",
+    "shopping_and_pmax": "No action needed. Retail Shopping and PMax product ads pull destination URLs from the Merchant Center feed automatically, which already resolve to product pages.",
+    "search_skags": "Each SKAG points at the hero product for its term, selected below from live feed data.",
+    "selection_method": "Filtered by brand AND product_type together, then took the median-priced item. Filtering by brand alone surfaced accessories -- the cheapest 'blaze' item is an insulated jacket and the cheapest 'coyote' is a pull-out drawer. Sending a grill searcher to a grill cover would fail silently.",
+    "blocker": "The Google Ads API exposes shopping_product.item_id but NO product URL field. betterpatio.com is blocked by this environment's network policy, and the Shopify connector is authorized to Trevor's own store, not BetterPatio. Product page URLs must come from Trevor."
   }
 }

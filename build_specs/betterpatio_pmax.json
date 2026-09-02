@@ -1,12 +1,11 @@
 {
   "account": "BetterPatio.com",
   "account_id": "6526674673",
-  "campaign_name": "BP · PMax — Retail Feed",
+  "campaign_name": "BP \u00b7 PMax \u2014 Retail Feed",
   "type": "PERFORMANCE_MAX",
-  "daily_budget": 35.00,
+  "daily_budget": 35.0,
   "bid_strategy": "MAXIMIZE_CONVERSIONS",
   "status_at_creation": "PAUSED",
-
   "merchant_center": {
     "merchant_id": 101451631,
     "verified": "This is the LIVE feed -- it backs all 3 currently-enabled Shopping campaigns. A second linked account (105749497) has 4 campaigns, none enabled; it appears stale and is deliberately not used.",
@@ -20,26 +19,35 @@
       "note": "95 products carry no brand value. They will not be reachable by any brand-based listing filter and are excluded from the brand-segmented asset groups below. Worth fixing in Merchant Center -- that is ~10% of the catalog invisible to brand targeting."
     }
   },
-
   "correction_note": "An earlier version of this spec built asset groups for Patio Furniture (Panama Jack, Modway, Anderson Teak, Hospitality Rattan) and Fire Features (The Outdoor Plus, Fire Pit Art, Dimplex). Those brands appear in old paused campaign names but are NOT in the live product feed -- both asset groups would have served zero products. Structure below is rebuilt from actual feed contents.",
-
   "url_strategy": {
-    "approach": "Feed-driven. This is a retail PMax campaign linked to Merchant Center, so product ads route to the real product page URLs carried in the feed. No hand-written product URLs.",
-    "asset_group_final_url": "NEEDS TREVOR — asset groups still require a final URL for non-Shopping placements. Must be an ACTIVE collection from the site menu or homepage. betterpatio.com is blocked by this environment's network policy so the live menu could not be read.",
-    "only_verified_url": "https://betterpatio.com/collections/all-bbq-islands (confirmed live -- it is the final URL on their current running ads)"
+    "approach": "Product pages only. Collections are reserved for organic traffic per Trevor's direction.",
+    "shopping_placements": "Product ads use the feed's own product URLs automatically -- nothing to supply.",
+    "asset_group_final_url": "Each asset group points at its hero product page (not a collection). URLs still needed from Trevor.",
+    "hero_products": {
+      "Pizza Ovens": "shopify_US_6987891277992_40778866720936 \u2014 Chicago Brick Oven 500 DIY Kit Wood Fired ($3,349)",
+      "BBQ Islands & Outdoor Kitchens": "shopify_US_783951069303_8687423029367 \u2014 Cal Flame 11 Foot Grand Pavilion ($8,499)",
+      "Built-In & Freestanding Grills": "shopify_US_8711391379697_45801005514993 \u2014 Blaze Premium LTE+ 32-Inch 4-Burner ($3,999)",
+      "Outdoor Kitchen Components": "shopify_US_7588571545841_42520078614769 \u2014 Blaze 20 Inch Outdoor Refrigerator ($649)"
+    }
   },
-
   "business_name": "BetterPatio.com",
-
   "asset_groups": [
     {
       "name": "Pizza Ovens",
       "listing_group_filter": {
         "dimension": "product_type_level1",
-        "include": ["pizza oven", "pizza oven stand", "pizza oven and cart"]
+        "include": [
+          "pizza oven",
+          "pizza oven stand",
+          "pizza oven and cart"
+        ]
       },
       "feed_coverage": 244,
-      "dominant_brands": ["chicago brick oven (214 SKUs)", "primo ceramic grills (22 SKUs)"],
+      "dominant_brands": [
+        "chicago brick oven (214 SKUs)",
+        "primo ceramic grills (22 SKUs)"
+      ],
       "rationale": "The single largest product cluster in the feed and the one the previous spec missed entirely. Chicago Brick Oven alone is 214 SKUs -- nearly a quarter of the catalog.",
       "headlines": [
         "Outdoor Pizza Ovens",
@@ -54,7 +62,7 @@
         "Pro & Trade Accounts"
       ],
       "long_headlines": [
-        "Outdoor Pizza Ovens From Chicago Brick Oven & Primo — Authorized Dealer",
+        "Outdoor Pizza Ovens From Chicago Brick Oven & Primo \u2014 Authorized Dealer",
         "Wood Fired & Gas Pizza Ovens With No Sales Tax And Free Shipping"
       ],
       "descriptions": [
@@ -68,10 +76,20 @@
       "name": "BBQ Islands & Outdoor Kitchens",
       "listing_group_filter": {
         "dimension": "product_type_level1",
-        "include": ["bbq island", "bbq island accessories", "outdoor kitchens"]
+        "include": [
+          "bbq island",
+          "bbq island accessories",
+          "outdoor kitchens"
+        ]
       },
       "feed_coverage": 218,
-      "dominant_brands": ["cal flame (45)", "mont alpi (56)", "betterpatio mountain series (38)", "ufinish by betterpatio outdoor kitchens (17)", "betterpatio designer series (6)"],
+      "dominant_brands": [
+        "cal flame (45)",
+        "mont alpi (56)",
+        "betterpatio mountain series (38)",
+        "ufinish by betterpatio outdoor kitchens (17)",
+        "betterpatio designer series (6)"
+      ],
       "rationale": "Maps directly onto the only verified live collection URL, and to the SKAG search campaign built around outdoor kitchen terms.",
       "headlines": [
         "Outdoor Kitchen Islands",
@@ -86,7 +104,7 @@
         "Commercial Grade Products"
       ],
       "long_headlines": [
-        "Pre-Built & Custom Outdoor Kitchen Islands — Cal Flame, Mont Alpi & More",
+        "Pre-Built & Custom Outdoor Kitchen Islands \u2014 Cal Flame, Mont Alpi & More",
         "Complete Outdoor Kitchens With Built-In Grill, Fridge, Sink & Storage"
       ],
       "descriptions": [
@@ -100,10 +118,22 @@
       "name": "Built-In & Freestanding Grills",
       "listing_group_filter": {
         "dimension": "product_type_level1",
-        "include": ["bbq grill", "freestanding grills"]
+        "include": [
+          "bbq grill",
+          "freestanding grills"
+        ]
       },
       "feed_coverage": 182,
-      "dominant_brands": ["summerset professional grills (66)", "fire magic (55)", "coyote outdoor living (44)", "blaze (41)", "bull (39)", "rcs (78)", "kokomo grills (5)", "trueflame (6)"],
+      "dominant_brands": [
+        "summerset professional grills (66)",
+        "fire magic (55)",
+        "coyote outdoor living (44)",
+        "blaze (41)",
+        "bull (39)",
+        "rcs (78)",
+        "kokomo grills (5)",
+        "trueflame (6)"
+      ],
       "rationale": "Feeds the brand SKAG search campaign. Every brand here is confirmed present in the feed, unlike the earlier draft.",
       "headlines": [
         "Built-In BBQ Grills",
@@ -118,7 +148,7 @@
         "Pro & Trade Accounts"
       ],
       "long_headlines": [
-        "Built-In Gas Grills From Blaze, Bull, Fire Magic & Coyote — Authorized Dealer",
+        "Built-In Gas Grills From Blaze, Bull, Fire Magic & Coyote \u2014 Authorized Dealer",
         "Commercial-Grade Built-In BBQ Grills With No Sales Tax And Free Shipping"
       ],
       "descriptions": [
@@ -132,10 +162,21 @@
       "name": "Outdoor Kitchen Components",
       "listing_group_filter": {
         "dimension": "product_type_level1",
-        "include": ["doors & drawers", "bbq accessory - power burner", "griddles", "refrigeration", "grill insulating liners"]
+        "include": [
+          "doors & drawers",
+          "bbq accessory - power burner",
+          "griddles",
+          "refrigeration",
+          "grill insulating liners"
+        ]
       },
       "feed_coverage": 134,
-      "dominant_brands": ["rcs", "le griddle (27)", "trueflame", "summerset professional grills"],
+      "dominant_brands": [
+        "rcs",
+        "le griddle (27)",
+        "trueflame",
+        "summerset professional grills"
+      ],
       "rationale": "Higher-margin attachment products that support the 'Bundle & Save' angle already running in their live ads. Lower search intent individually, but strong basket-builders alongside island and grill purchases.",
       "headlines": [
         "Outdoor Kitchen Components",
@@ -150,7 +191,7 @@
         "Pro & Trade Accounts"
       ],
       "long_headlines": [
-        "Outdoor Kitchen Doors, Drawers, Griddles & Refrigeration — Authorized Dealer",
+        "Outdoor Kitchen Doors, Drawers, Griddles & Refrigeration \u2014 Authorized Dealer",
         "Build Out Your Outdoor Kitchen With No Sales Tax And Free Shipping"
       ],
       "descriptions": [
@@ -161,30 +202,27 @@
       ]
     }
   ],
-
   "feed_coverage_summary": {
     "covered_by_asset_groups": 778,
     "total_eligible": 894,
     "uncovered": 116,
     "uncovered_note": "Remaining SKUs sit in a long tail of 57 product types (fireplace 18, plus smaller categories). Deliberately left out of the first build rather than forcing a weak catch-all asset group -- revisit once the four above have performance data."
   },
-
   "images_required": {
-    "status": "BLOCKED — betterpatio.com is unreachable from this environment (403 policy denial at the network proxy), so site imagery could not be pulled.",
+    "status": "BLOCKED \u2014 betterpatio.com is unreachable from this environment (403 policy denial at the network proxy), so site imagery could not be pulled.",
     "note": "Merchant Center product images are used automatically for Shopping placements, but asset groups still need their own images for the other PMax inventory.",
     "per_asset_group": [
-      "Landscape 1.91:1 — minimum 600x314, recommended 1200x628",
-      "Square 1:1 — minimum 300x300, recommended 1200x1200",
-      "Portrait 4:5 — optional, improves reach",
-      "Logo 1:1 — minimum 128x128"
+      "Landscape 1.91:1 \u2014 minimum 600x314, recommended 1200x628",
+      "Square 1:1 \u2014 minimum 300x300, recommended 1200x1200",
+      "Portrait 4:5 \u2014 optional, improves reach",
+      "Logo 1:1 \u2014 minimum 128x128"
     ],
     "warning": "Real product photography only. The ad standards are explicit that stock or AI-generated imagery reduces trust and CTR -- skip an asset rather than degrade it."
   },
-
   "blockers_before_enabling": [
-    "Asset group final URLs — active collection URLs from the site menu/homepage. Only /collections/all-bbq-islands is verified.",
-    "Images per asset group — must come from the site or product catalog.",
-    "Conversion tracking — the account records zero purchase conversions, so MAXIMIZE_CONVERSIONS has no signal to optimize toward. Trevor was advised and elected to proceed; consider MAXIMIZE_CLICKS as an interim if tracking cannot be fixed first.",
-    "95 feed products missing a brand value — invisible to brand-based targeting."
+    "Product page URLs \u2014 export the Merchant Center feed; its 'link' column maps every item_id to its product URL. One export unblocks all SKAGs and asset groups permanently.",
+    "Images per asset group \u2014 betterpatio.com is unreachable from this environment (403 at the network proxy).",
+    "Conversion tracking \u2014 the account records zero purchase conversions, so MAXIMIZE_CONVERSIONS has no signal. Trevor was advised and elected to proceed; MAXIMIZE_CLICKS is the interim alternative.",
+    "95 feed products (~10%) carry no brand value and are invisible to brand-based targeting."
   ]
 }
