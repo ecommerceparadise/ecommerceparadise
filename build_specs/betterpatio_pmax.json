@@ -21,15 +21,13 @@
   },
   "correction_note": "An earlier version of this spec built asset groups for Patio Furniture (Panama Jack, Modway, Anderson Teak, Hospitality Rattan) and Fire Features (The Outdoor Plus, Fire Pit Art, Dimplex). Those brands appear in old paused campaign names but are NOT in the live product feed -- both asset groups would have served zero products. Structure below is rebuilt from actual feed contents.",
   "url_strategy": {
-    "approach": "Products only, from the feed. No collection pages anywhere.",
-    "shopping_placements": "Product ads use the feed's own product URLs automatically -- every click lands on a product page. Nothing to supply.",
-    "asset_group_final_url": "Hero product page per asset group (for non-Shopping inventory). Product URLs still needed from the Merchant Center feed export.",
-    "division_of_labour": "PMax and Shopping own product-specific traffic. Search owns custom kitchen lead gen via the funnel at betterpatio.com/pages/custom-outdoor-kitchens. Collections are organic-only.",
-    "hero_products": {
-      "Pizza Ovens": "shopify_US_6987891277992_40778866720936 \u2014 Chicago Brick Oven 500 DIY Kit Wood Fired ($3,349)",
-      "BBQ Islands & Outdoor Kitchens": "shopify_US_783951069303_8687423029367 \u2014 Cal Flame 11 Foot Grand Pavilion ($8,499)",
-      "Built-In & Freestanding Grills": "shopify_US_8711391379697_45801005514993 \u2014 Blaze Premium LTE+ 32-Inch 4-Burner ($3,999)",
-      "Outdoor Kitchen Components": "shopify_US_7588571545841_42520078614769 \u2014 Blaze 20 Inch Outdoor Refrigerator ($649)"
+    "approach": "Two destinations only. Shopping placements -> product pages from the feed. All non-Shopping placements -> the custom kitchen funnel. Collections are organic-only.",
+    "shopping_placements": "Product ads use the feed's own product URLs automatically. Nothing to supply.",
+    "non_shopping_placements": {
+      "url": "https://betterpatio.com/pages/custom-outdoor-kitchens",
+      "applies_to": "Display, YouTube, Discover, Gmail and Search inventory within PMax -- everything that is not a product listing.",
+      "rationale": "Trevor's direction. These are browse-stage placements, not high-intent product searches, so a lead-gen funnel fits better than an arbitrary single product page. It also converts on lead form submission -- the one conversion action still firing in this account (18/30d).",
+      "verified": "Live final URL on 'Build Your Own Outdoor Kitchen Campaign', the account's only converting campaign."
     }
   },
   "business_name": "BetterPatio.com",
@@ -71,7 +69,9 @@
         "Authorized Chicago Brick Oven dealer. No sales tax and free shipping.",
         "Wood fired and gas pizza ovens, stands and carts in stock.",
         "Trade accounts available for contractors, designers and builders."
-      ]
+      ],
+      "final_url": "https://betterpatio.com/pages/custom-outdoor-kitchens",
+      "final_url_note": "Custom kitchen funnel. Product ads in this asset group still route to their own product pages via the feed."
     },
     {
       "name": "BBQ Islands & Outdoor Kitchens",
@@ -113,7 +113,9 @@
         "Fully customizable built-in grills and islands. No sales tax and free shipping.",
         "Create the ultimate outdoor cooking space for friends and family.",
         "Trade pricing available for contractors, designers and builders."
-      ]
+      ],
+      "final_url": "https://betterpatio.com/pages/custom-outdoor-kitchens",
+      "final_url_note": "Custom kitchen funnel. Product ads in this asset group still route to their own product pages via the feed."
     },
     {
       "name": "Built-In & Freestanding Grills",
@@ -157,7 +159,9 @@
         "Authorized dealer for Blaze, Bull, Fire Magic and Coyote. No tax, free shipping.",
         "Extensive inventory of residential and commercial-grade built-in grills.",
         "Trade accounts available for contractors, designers and builders."
-      ]
+      ],
+      "final_url": "https://betterpatio.com/pages/custom-outdoor-kitchens",
+      "final_url_note": "Custom kitchen funnel. Product ads in this asset group still route to their own product pages via the feed."
     },
     {
       "name": "Outdoor Kitchen Components",
@@ -200,7 +204,9 @@
         "Access doors, drawers, griddles, power burners and refrigeration in stock.",
         "Bundle components with your island or grill and save.",
         "Trade accounts available for contractors, designers and builders."
-      ]
+      ],
+      "final_url": "https://betterpatio.com/pages/custom-outdoor-kitchens",
+      "final_url_note": "Custom kitchen funnel. Product ads in this asset group still route to their own product pages via the feed."
     }
   ],
   "feed_coverage_summary": {
@@ -221,9 +227,12 @@
     "warning": "Real product photography only. The ad standards are explicit that stock or AI-generated imagery reduces trust and CTR -- skip an asset rather than degrade it."
   },
   "blockers_before_enabling": [
-    "Product page URLs \u2014 export the Merchant Center feed; its 'link' column maps every item_id to its product URL. One export unblocks all SKAGs and asset groups permanently.",
-    "Images per asset group \u2014 betterpatio.com is unreachable from this environment (403 at the network proxy).",
-    "Conversion tracking \u2014 the account records zero purchase conversions, so MAXIMIZE_CONVERSIONS has no signal. Trevor was advised and elected to proceed; MAXIMIZE_CLICKS is the interim alternative.",
+    "Images per asset group \u2014 betterpatio.com is unreachable from this environment (403 at the network proxy), so site imagery could not be pulled. Merchant Center images cover Shopping placements automatically, but asset groups need their own for the rest.",
+    "Conversion tracking for PURCHASES \u2014 still not firing. Note this no longer blocks measurement of the funnel path, which converts on lead form submission and is working.",
     "95 feed products (~10%) carry no brand value and are invisible to brand-based targeting."
+  ],
+  "resolved_blockers": [
+    "Product page URLs \u2014 NO LONGER NEEDED. Shopping and PMax product ads pull URLs from the feed automatically; every non-Shopping placement now points at the known funnel URL. The Merchant Center export is no longer required for this build.",
+    "Collection page URLs \u2014 NO LONGER NEEDED. Nothing in the build points at a collection."
   ]
 }
