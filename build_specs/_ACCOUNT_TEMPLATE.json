@@ -1,0 +1,93 @@
+{
+  "name": "Standard Account Structure",
+  "origin": "Derived from the BetterPatio rebuild. Trevor's intended default for every managed account.",
+
+  "the_model": {
+    "principle": "Three campaigns. PMax covers everything on the acquisition side; two remarketing campaigns split by intent.",
+    "campaigns": [
+      {
+        "role": "ACQUISITION",
+        "type": "PERFORMANCE_MAX",
+        "name_pattern": "{ACCT} · PMax — {Category}",
+        "budget_share": "~73%",
+        "destinations": {
+          "product_ads": "Product pages, supplied automatically by the Merchant Center feed",
+          "search_text_ads_and_all_other_placements": "The lead-gen funnel page"
+        },
+        "why": "One campaign serves Search, Shopping, Display, YouTube, Discover and Gmail. Replaces separate Search and Shopping campaigns entirely.",
+        "mandatory_settings": {
+          "final_url_expansion": "OFF — left on, Google routes traffic to pages of its own choosing, including collection pages. It silently undoes the landing page policy.",
+          "listing_group_filter": "Filter to the categories with real image coverage rather than the whole catalogue.",
+          "status_at_creation": "PAUSED"
+        }
+      },
+      {
+        "role": "REMARKETING — LEAD INTENT",
+        "type": "DISPLAY",
+        "name_pattern": "{ACCT} RT · Static Display",
+        "budget_share": "~13%",
+        "destination": "The lead-gen funnel page, exclusively",
+        "why": "Static creative pulling warm traffic back to the quote funnel. On BetterPatio this is the best CPA in the account."
+      },
+      {
+        "role": "REMARKETING — PRODUCT INTENT",
+        "type": "DISPLAY",
+        "name_pattern": "{ACCT} RT · Dynamic Display",
+        "budget_share": "~13%",
+        "destination": "Product pages via the Merchant Center feed",
+        "dynamic_remarketing": true,
+        "why": "Shows viewers the exact products they browsed. Requires the feed linked to the campaign.",
+        "common_failure": "Pointing dynamic remarketing at the homepage instead of feed products. This was live on BetterPatio and is the likely cause of $291/mo producing zero conversions. Check this first on any account."
+      }
+    ],
+    "never": [
+      "No ads pointing at collection pages — collections are for organic traffic.",
+      "No ads pointing at the homepage.",
+      "No separate Search or Shopping campaigns — PMax absorbs both."
+    ]
+  },
+
+  "prerequisites": {
+    "product_feed": "A linked Merchant Center account with an eligible product feed. Powers PMax product ads and dynamic remarketing.",
+    "funnel_page": "A lead-gen / quote funnel page. Powers PMax search text ads and static remarketing. WITHOUT IT, two of the three campaigns have nowhere to send traffic.",
+    "images": "Asset group images. Check the account's existing asset library first -- BetterPatio already held 766 usable images, so none needed sourcing.",
+    "conversion_tracking": "Funnel path converts on lead form submission; product path needs a working purchase pixel. The funnel half is measurable even when purchase tracking is broken -- which is why it is the safer half to launch first."
+  },
+
+  "account_readiness": {
+    "note": "Feed presence verified via the API. Funnel presence inferred from /pages/ URLs appearing in live ads -- an account may have a suitable page that simply is not being advertised yet.",
+    "BetterPatio.com": {
+      "feed": "YES (101451631 live; 105749497 stale)",
+      "funnel": "YES — /pages/custom-outdoor-kitchens",
+      "status": "READY — spec complete, awaiting push"
+    },
+    "eCommerce Paradise": {
+      "feed": "YES (5409082290)",
+      "funnel": "YES — /pages/niches, /pages/turn-key-done-for-you-high-ticket-drop-shipping-store-service-package",
+      "status": "TEMPLATE FITS AWKWARDLY — this is a services business (DFY builds, coaching, ads management), not a product retailer. The funnel half applies cleanly; the product half is questionable since there is little physical catalogue to sell. Likely wants funnel-led Search rather than PMax retail."
+    },
+    "Laser Engraver Store": {
+      "feed": "YES (5823754958)",
+      "funnel": "NO — no /pages/ URL in any ad",
+      "status": "NEEDS FUNNEL PAGE. Note this account already has a strong SKAG structure worth preserving; the template would replace it, which may be the wrong trade here."
+    },
+    "Fountains USA": {
+      "feed": "YES (258983089)",
+      "funnel": "NO — no /pages/ URL in any ad",
+      "status": "NEEDS FUNNEL PAGE. Otherwise a clean slate — every campaign is paused, nothing to disrupt."
+    },
+    "Culinary Profis": {
+      "feed": "YES (5595259630)",
+      "funnel": "NO — no /pages/ URL in any ad",
+      "status": "NEEDS FUNNEL PAGE. Otherwise a clean slate — effectively an empty account."
+    }
+  },
+
+  "rollout_blocker": {
+    "issue": "Three of five accounts have no funnel page: Laser Engraver Store, Fountains USA, Culinary Profis.",
+    "consequence": "Two of the three template campaigns (PMax text ads, static remarketing) have no destination without one. Those accounts can only run the product half until a funnel exists.",
+    "note": "Building these is squarely covered by the quote-request-home-page, b2b-quote-funnel and horizon-quote-store skills."
+  },
+
+  "known_tradeoff": "Folding Search into PMax gives up search-term visibility -- PMax reports at asset-group level, so the weekly search-term audit and negative-keyword workflow do not apply the same way. Accepted deliberately."
+}
