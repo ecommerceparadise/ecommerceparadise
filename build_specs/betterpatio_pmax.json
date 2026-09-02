@@ -1,0 +1,157 @@
+{
+  "account": "BetterPatio.com",
+  "account_id": "6526674673",
+  "campaign_name": "BP · PMax — Brand Clusters",
+  "type": "PERFORMANCE_MAX",
+  "daily_budget": 35.00,
+  "bid_strategy": "MAXIMIZE_CONVERSIONS",
+  "status_at_creation": "PAUSED",
+
+  "structure_rationale": "Four asset groups clustered by product category rather than one campaign per brand. The account already contains ~30 abandoned single-brand PMax campaigns that never launched -- fragmenting budget that thinly is what stalled them. Clustering gives Google enough volume per asset group to actually exit the learning phase.",
+
+  "copy_sourcing_note": "Every trust claim below is taken verbatim from BetterPatio's own live ad copy pulled from the account (Authorized Dealer, No Tax & Free Shipping, Speak To An Expert 24/7, trade accounts for contractors/designers/builders, commercial grade). No claims were invented -- asserting an unverified offer on a client account is a compliance risk, not just an accuracy one.",
+
+  "known_risk": {
+    "issue": "PMax optimizes toward a conversion signal. This account currently records zero purchase conversions -- the purchase pixel appears not to fire.",
+    "consequence": "Until tracking is confirmed, PMax has no signal to learn from and will spend budget discovering that. Trevor was advised of this and elected to proceed.",
+    "mitigation": "Launch paused. Confirm the purchase pixel fires before enabling. If tracking cannot be fixed first, consider running on MAXIMIZE_CLICKS temporarily so spend at least buys traffic rather than chasing a phantom signal."
+  },
+
+  "business_name": "BetterPatio.com",
+
+  "asset_groups": [
+    {
+      "name": "Grills & BBQ",
+      "brands": ["Blaze", "Bull", "Fire Magic", "Coyote", "Summerset", "American Outdoor Grill", "Kokomo", "RCS"],
+      "final_url": "https://betterpatio.com/collections/all-bbq-islands",
+      "final_url_status": "PLACEHOLDER — verified to exist, but a grills-specific collection URL would convert better. Confirm correct URL before enabling.",
+      "headlines": [
+        "Built-In BBQ Grills",
+        "Authorized Dealer",
+        "No Tax & Free Shipping",
+        "Blaze, Bull & Fire Magic",
+        "Commercial Grade Grills",
+        "Speak To An Expert 24/7",
+        "Bundle & Save Big",
+        "Shop Built-In Gas Grills",
+        "Save Up To 25%",
+        "Pro & Trade Accounts"
+      ],
+      "long_headlines": [
+        "Built-In Gas Grills From Blaze, Bull, Fire Magic & Coyote — Authorized Dealer",
+        "Commercial-Grade Built-In BBQ Grills With No Sales Tax And Free Shipping"
+      ],
+      "descriptions": [
+        "Call in to speak with an expert and bundle your package.",
+        "Authorized dealer for Blaze, Bull, Fire Magic and Coyote. No tax, free shipping.",
+        "Extensive inventory of residential and commercial-grade built-in grills.",
+        "Trade accounts available for contractors, designers and builders."
+      ]
+    },
+    {
+      "name": "Outdoor Kitchens & Islands",
+      "brands": ["Cal Flame", "Mont Alpi", "Chicago Brick Oven"],
+      "final_url": "https://betterpatio.com/collections/all-bbq-islands",
+      "final_url_status": "VERIFIED — this collection is the live final URL on their current ads.",
+      "headlines": [
+        "Outdoor Kitchen Islands",
+        "Pre-Built BBQ Islands",
+        "Cal Flame & Mont Alpi",
+        "No Tax & Free Shipping",
+        "Authorized Dealer",
+        "Fully Customizable",
+        "Built In BBQ, Fridge & More",
+        "Speak To An Expert 24/7",
+        "Bundle & Save Big",
+        "Commercial Grade Products"
+      ],
+      "long_headlines": [
+        "Pre-Built & Custom Outdoor Kitchen Islands — Cal Flame, Mont Alpi & More",
+        "Complete Outdoor Kitchens With Built-In Grill, Fridge, Sink & Storage"
+      ],
+      "descriptions": [
+        "Call in to design your custom outdoor kitchen island.",
+        "Fully customizable built-in grills and islands. No sales tax and free shipping.",
+        "Create the ultimate outdoor cooking space for friends and family.",
+        "Trade pricing available for contractors, designers and builders."
+      ]
+    },
+    {
+      "name": "Patio Furniture",
+      "brands": ["Panama Jack", "Modway", "Hospitality Rattan", "Source Furniture", "Anderson Teak", "Douglas Nance"],
+      "final_url": "https://betterpatio.com/collections/all-bbq-islands",
+      "final_url_status": "WRONG CATEGORY — placeholder only. A patio furniture collection URL is required before enabling; pointing furniture traffic at BBQ islands will tank conversion rate.",
+      "headlines": [
+        "Outdoor Patio Furniture",
+        "Panama Jack Lounge Sets",
+        "Modway Outdoor Sets",
+        "No Tax & Free Shipping",
+        "Authorized Dealer",
+        "Shop The Full Collection",
+        "Commercial Grade Products",
+        "Speak To An Expert 24/7",
+        "Save Up To 25%",
+        "Pro & Trade Accounts"
+      ],
+      "long_headlines": [
+        "Outdoor Patio Furniture From Panama Jack, Modway & Anderson Teak",
+        "Residential & Commercial-Grade Patio Sets With No Tax And Free Shipping"
+      ],
+      "descriptions": [
+        "Call in to speak with a patio furniture expert today.",
+        "Lounge sets, daybeds and dining collections. No sales tax and free shipping.",
+        "Extensive inventory of residential and commercial-grade patio furniture.",
+        "Trusted partner for contractors, designers, builders and architects."
+      ]
+    },
+    {
+      "name": "Fire Features & Heating",
+      "brands": ["The Outdoor Plus", "Fire Pit Art", "Dimplex", "Empire Comfort Systems"],
+      "final_url": "https://betterpatio.com/collections/all-bbq-islands",
+      "final_url_status": "WRONG CATEGORY — placeholder only. A fire features collection URL is required before enabling.",
+      "headlines": [
+        "Outdoor Fire Pits & Bowls",
+        "Fire Tables & Fireplaces",
+        "The Outdoor Plus Dealer",
+        "No Tax & Free Shipping",
+        "Authorized Dealer",
+        "Commercial Grade Products",
+        "Speak To An Expert 24/7",
+        "Bundle & Save Big",
+        "Shop Fire Features",
+        "Pro & Trade Accounts"
+      ],
+      "long_headlines": [
+        "Outdoor Fire Pits, Fire Tables & Fireplaces — Authorized Dealer",
+        "Gas Fire Features From The Outdoor Plus, Fire Pit Art & Dimplex"
+      ],
+      "descriptions": [
+        "Call in to speak with a fire feature expert today.",
+        "Fire pits, fire tables and outdoor fireplaces. No tax and free shipping.",
+        "Commercial-grade outdoor heating and fire features in stock.",
+        "Trade accounts available for contractors, designers and builders."
+      ]
+    }
+  ],
+
+  "images_required": {
+    "note": "PMax will not serve without images, and these cannot be generated here. Each asset group needs real product photography from BetterPatio's own catalog.",
+    "per_asset_group": [
+      "Landscape 1.91:1 — minimum 600x314, recommended 1200x628",
+      "Square 1:1 — minimum 300x300, recommended 1200x1200",
+      "Portrait 4:5 — optional but improves reach",
+      "Logo 1:1 — minimum 128x128"
+    ],
+    "warning": "Do not substitute stock photography or AI-generated imagery. The ad standards are explicit that it reduces trust and CTR -- skip an asset rather than degrade it."
+  },
+
+  "budget_rebalance_at_150_per_day": {
+    "note": "Trevor raised the account budget from $100/day to $150/day, which is roughly the prior run rate of $157/day. PMax is funded from the increase rather than by starving the proven performers.",
+    "outdoor_kitchens_search": 40.00,
+    "grills_by_brand_search": 30.00,
+    "shopping_brand_model": 35.00,
+    "pmax_brand_clusters": 35.00,
+    "display_remarketing": 10.00,
+    "total": 150.00
+  }
+}

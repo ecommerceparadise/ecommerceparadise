@@ -1,94 +1,191 @@
 {
   "account": "BetterPatio.com",
   "account_id": "6526674673",
-  "daily_budget_total": 100.00,
+  "daily_budget_total": 150.0,
   "prior_daily_spend": 156.59,
-  "budget_note": "Trevor set $100/day account-wide. Prior run rate was ~$157/day, so this is a 36% reduction -- allocation must concentrate on proven performers rather than spread across the old 100+ campaign sprawl.",
+  "budget_note": "Trevor set $150/day account-wide (raised from an initial $100/day). Prior run rate was ~$157/day, so this is roughly flat rather than a cut -- PMax is funded by the increase instead of by starving proven performers.",
   "keyword_source": "Google Ads Keyword Planner API (KeywordPlanIdeaService), US / English, pulled live. No invented terms.",
   "all_campaigns_created_paused": true,
-
   "campaigns": [
     {
-      "name": "BP · Outdoor Kitchens — SKAG",
+      "name": "BP \u00b7 Outdoor Kitchens \u2014 SKAG",
       "type": "SEARCH",
-      "daily_budget": 35.00,
+      "daily_budget": 40.0,
       "bid_strategy": "MAXIMIZE_CONVERSIONS",
       "rationale": "Rebuilds the ONLY campaign in the account that converts (Build Your Own Outdoor Kitchen: 11 conv, $120 CPA). Highest-value category and the clearest buyer intent.",
       "skags": [
-        {"keyword": "outdoor kitchens near me", "match": "PHRASE", "monthly_searches": 3600, "bid_low": 2.88, "bid_high": 11.00, "note": "Highest purchase intent in the entire dataset -- 'near me' plus category"},
-        {"keyword": "modular outdoor kitchen", "match": "PHRASE", "monthly_searches": 12100, "bid_low": 1.41, "bid_high": 6.72},
-        {"keyword": "prefab outdoor kitchen", "match": "PHRASE", "monthly_searches": 12100, "bid_low": 1.41, "bid_high": 6.72},
-        {"keyword": "outdoor kitchen island", "match": "PHRASE", "monthly_searches": 8100, "bid_low": 1.55, "bid_high": 7.05},
-        {"keyword": "bbq island", "match": "PHRASE", "monthly_searches": 3600, "bid_low": 1.42, "bid_high": 8.10}
+        {
+          "keyword": "outdoor kitchens near me",
+          "match": "PHRASE",
+          "monthly_searches": 3600,
+          "bid_low": 2.88,
+          "bid_high": 11.0,
+          "note": "Highest purchase intent in the entire dataset -- 'near me' plus category"
+        },
+        {
+          "keyword": "modular outdoor kitchen",
+          "match": "PHRASE",
+          "monthly_searches": 12100,
+          "bid_low": 1.41,
+          "bid_high": 6.72
+        },
+        {
+          "keyword": "prefab outdoor kitchen",
+          "match": "PHRASE",
+          "monthly_searches": 12100,
+          "bid_low": 1.41,
+          "bid_high": 6.72
+        },
+        {
+          "keyword": "outdoor kitchen island",
+          "match": "PHRASE",
+          "monthly_searches": 8100,
+          "bid_low": 1.55,
+          "bid_high": 7.05
+        },
+        {
+          "keyword": "bbq island",
+          "match": "PHRASE",
+          "monthly_searches": 3600,
+          "bid_low": 1.42,
+          "bid_high": 8.1
+        }
       ]
     },
     {
-      "name": "BP · Grills by Brand — SKAG",
+      "name": "BP \u00b7 Grills by Brand \u2014 SKAG",
       "type": "SEARCH",
-      "daily_budget": 25.00,
+      "daily_budget": 30.0,
       "bid_strategy": "MAXIMIZE_CONVERSIONS",
       "rationale": "Brand terms carry lower CPCs than category terms and higher purchase intent -- someone searching a specific brand has already chosen. Limited to 5 SKAGs so each gets enough budget to gather data.",
       "skags": [
-        {"keyword": "blaze grill", "match": "PHRASE", "monthly_searches": 14800, "bid_low": 0.84, "bid_high": 7.02, "note": "Best volume-to-cost ratio of any brand term"},
-        {"keyword": "coyote gas grill", "match": "PHRASE", "monthly_searches": 5400, "bid_low": 0.99, "bid_high": 5.56, "note": "QUALIFIED deliberately -- bare 'coyote grill' pulls restaurant traffic"},
-        {"keyword": "bull grill", "match": "PHRASE", "monthly_searches": 4400, "bid_low": 0.64, "bid_high": 4.51},
-        {"keyword": "fire magic grill", "match": "PHRASE", "monthly_searches": 2900, "bid_low": 0.79, "bid_high": 5.89},
-        {"keyword": "mont alpi outdoor kitchen", "match": "PHRASE", "monthly_searches": 1600, "bid_low": 2.50, "bid_high": 13.77, "note": "Highest bid range in the set -- expensive but signals high order value"}
+        {
+          "keyword": "blaze grill",
+          "match": "PHRASE",
+          "monthly_searches": 14800,
+          "bid_low": 0.84,
+          "bid_high": 7.02,
+          "note": "Best volume-to-cost ratio of any brand term"
+        },
+        {
+          "keyword": "coyote gas grill",
+          "match": "PHRASE",
+          "monthly_searches": 5400,
+          "bid_low": 0.99,
+          "bid_high": 5.56,
+          "note": "QUALIFIED deliberately -- bare 'coyote grill' pulls restaurant traffic"
+        },
+        {
+          "keyword": "bull grill",
+          "match": "PHRASE",
+          "monthly_searches": 4400,
+          "bid_low": 0.64,
+          "bid_high": 4.51
+        },
+        {
+          "keyword": "fire magic grill",
+          "match": "PHRASE",
+          "monthly_searches": 2900,
+          "bid_low": 0.79,
+          "bid_high": 5.89
+        },
+        {
+          "keyword": "mont alpi outdoor kitchen",
+          "match": "PHRASE",
+          "monthly_searches": 1600,
+          "bid_low": 2.5,
+          "bid_high": 13.77,
+          "note": "Highest bid range in the set -- expensive but signals high order value"
+        }
       ]
     },
     {
-      "name": "BP · Shopping — Brand/Model",
+      "name": "BP \u00b7 Shopping \u2014 Brand/Model",
       "type": "SHOPPING",
-      "daily_budget": 32.00,
+      "daily_budget": 35.0,
       "bid_strategy": "MANUAL_CPC",
       "rationale": "Shopping is how ecommerce sells, but the three existing Shopping campaigns burned $1,686/mo for zero recorded conversions. Restarting as ONE measured tier instead of three, at a fraction of prior spend, until it proves itself.",
       "priority": "LOW",
       "note": "Single tier deliberately. The generic/brand/model ladder gets rebuilt only once this one demonstrates it converts."
     },
     {
-      "name": "BP RT · Display Remarketing",
+      "name": "BP RT \u00b7 Display Remarketing",
       "type": "DISPLAY",
-      "daily_budget": 8.00,
+      "daily_budget": 10.0,
       "bid_strategy": "MAXIMIZE_CONVERSIONS",
       "rationale": "RETAINED, not rebuilt. Existing BP RT 2 delivers the best CPA in the account -- 7 conversions at $21 on just $147/mo. It was budget-starved at $5/day; this is a modest increase.",
       "action": "keep_existing_raise_budget"
+    },
+    {
+      "name": "BP \u00b7 PMax \u2014 Brand Clusters",
+      "type": "PERFORMANCE_MAX",
+      "daily_budget": 35.0,
+      "bid_strategy": "MAXIMIZE_CONVERSIONS",
+      "rationale": "Trevor's chosen PMax + SKAG hybrid. Four asset groups clustered by category. Full asset spec in build_specs/betterpatio_pmax.json.",
+      "spec_file": "build_specs/betterpatio_pmax.json"
     }
   ],
-
   "budget_allocation_check": {
-    "outdoor_kitchens": 35.00,
-    "grills_by_brand": 25.00,
-    "shopping": 32.00,
-    "remarketing": 8.00,
-    "total": 100.00
+    "outdoor_kitchens": 40.0,
+    "grills_by_brand": 30.0,
+    "shopping": 35.0,
+    "pmax_brand_clusters": 35.0,
+    "remarketing": 10.0,
+    "total": 150.0
   },
-
   "pmax_decision": {
-    "included": false,
-    "reason": "Trevor chose a PMax + SKAG hybrid, and PMax is planned -- but it is deliberately NOT in this first build. Performance Max optimizes toward a conversion signal, and this account currently records zero purchase conversions. Launching PMax into that means it has nothing to learn from and will spend the budget discovering that. It goes live as soon as tracking is confirmed firing, funded by trimming Shopping.",
-    "planned_budget_when_enabled": 12.00,
-    "funded_by": "Shopping tier reduced 32 -> 20"
+    "included": true,
+    "note": "Included at Trevor's explicit direction after being advised that PMax optimizes toward a conversion signal this account does not currently record. Created paused; confirm the purchase pixel fires before enabling.",
+    "daily_budget": 35.0
   },
-
   "required_negatives": {
     "note": "Campaign-level negatives beyond the shared universal list, driven by what the keyword data exposed.",
-    "BP · Grills by Brand — SKAG": [
-      {"term": "bar and grill", "reason": "Coyote/restaurant contamination"},
-      {"term": "mexican grill", "reason": "Coyote restaurant chain"},
-      {"term": "southwest grill", "reason": "Coyote restaurant chain"},
-      {"term": "cantina", "reason": "Restaurant"},
-      {"term": "menu", "reason": "Restaurant intent"},
-      {"term": "restaurant", "reason": "Restaurant intent"},
-      {"term": "sizzler", "reason": "Restaurant chain surfacing in grill searches"},
-      {"term": "lux blaze", "reason": "Unrelated product matching 'blaze'"},
-      {"term": "bullseye", "reason": "Unrelated product matching 'bull'"}
+    "BP \u00b7 Grills by Brand \u2014 SKAG": [
+      {
+        "term": "bar and grill",
+        "reason": "Coyote/restaurant contamination"
+      },
+      {
+        "term": "mexican grill",
+        "reason": "Coyote restaurant chain"
+      },
+      {
+        "term": "southwest grill",
+        "reason": "Coyote restaurant chain"
+      },
+      {
+        "term": "cantina",
+        "reason": "Restaurant"
+      },
+      {
+        "term": "menu",
+        "reason": "Restaurant intent"
+      },
+      {
+        "term": "restaurant",
+        "reason": "Restaurant intent"
+      },
+      {
+        "term": "sizzler",
+        "reason": "Restaurant chain surfacing in grill searches"
+      },
+      {
+        "term": "lux blaze",
+        "reason": "Unrelated product matching 'blaze'"
+      },
+      {
+        "term": "bullseye",
+        "reason": "Unrelated product matching 'bull'"
+      }
     ]
   },
-
   "excluded_from_build": [
-    {"term": "outdoor kitchen", "monthly_searches": 60500, "reason": "Their single largest wasted line item -- $199 spend, 43 clicks, zero conversions. At 60,500/mo and $2.11-7.16 CPC it would consume the entire $100/day budget on browse-stage traffic. Excluded deliberately at this budget level; revisit if budget grows."}
+    {
+      "term": "outdoor kitchen",
+      "monthly_searches": 60500,
+      "reason": "Their single largest wasted line item -- $199 spend, 43 clicks, zero conversions. At 60,500/mo and $2.11-7.16 CPC it would dominate the $70/day allocated to Search and crowd out the terms that actually convert. Still excluded at $150/day; revisit once conversion tracking works and the SKAGs have proven their CPA."
+    }
   ],
-
   "settings": {
     "location_targeting": "United States",
     "location_option": "PRESENCE",
