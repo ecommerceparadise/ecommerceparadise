@@ -1,0 +1,61 @@
+{
+  "campaign_id": 23303878302,
+  "campaign_name": "Build Your Own Outdoor Kitchen Campaign",
+  "account": "BetterPatio.com (6526674673)",
+  "landing_page": "https://betterpatio.com/pages/custom-outdoor-kitchens",
+  "rationale": "One ad group held 36 keywords and served a single 3-headline RSA. Ad relevance was BELOW AVERAGE on every off-theme keyword. Split into four intent themes, each with its own 15-headline RSA whose copy matches the query.",
+  "claim_source": "Every headline and description below reuses a claim already running in this account's existing ads. No new offers were invented.",
+  "verified_claims": [
+    "Free 3D rendering / free design consultation, no obligation",
+    "Built to your exact specs, made to order",
+    "Free shipping to the lower 48",
+    "Financing available on qualifying orders",
+    "Authorized dealer",
+    "Ships pre-assembled",
+    "Made in the USA",
+    "Industry-leading warranty",
+    "Free quote back in 1 business day",
+    "Talk to a real specialist, not a call center",
+    "PO-friendly invoicing for contractors",
+    "Brands: Blaze, Bull, Cal Flame, Coyote, RCS, Summerset"
+  ],
+  "ad_groups": {
+    "A_existing_190077137940": {
+      "name": "Build Your Own Outdoor Kitchen",
+      "action": "keep; add a 15-headline RSA alongside the existing 3-headline ad as a split test",
+      "keywords": [
+        "complete outdoor kitchen", "custom backyard kitchens",
+        "custom built outdoor kitchen", "custom made outdoor kitchen",
+        "custom outdoor bbq kitchen", "custom outdoor kitchen",
+        "custom outdoor kitchen design", "custom outdoor kitchens near me",
+        "outdoor kitchen", "outdoor kitchens",
+        "built outdoor kitchen", "built in bbq outdoor kitchen"
+      ]
+    },
+    "B_new": {
+      "name": "Design Your Own | 3D Rendering",
+      "keywords": [
+        "design my kitchen", "design my outdoor kitchen", "design your own kitchen",
+        "design your own outdoor kitchen", "3d kitchen design",
+        "outdoor kitchen designers", "outdoor spaces design",
+        "outdoor kitchen design", "outdoor kitchen designs", "backyard kitchen ideas"
+      ]
+    },
+    "C_new": {
+      "name": "BBQ & Grill Islands",
+      "keywords": [
+        "custom bbq island", "custom bbq islands near me", "custom grill island",
+        "custom outdoor bbq grills", "custom outdoor grill", "custom outdoor grill islands",
+        "custom outdoor grill station", "custom outdoor kitchen islands",
+        "modular outdoor kitchen", "outdoor grill island", "pre built outdoor kitchen islands"
+      ]
+    },
+    "D_new": {
+      "name": "Builders & Contractors",
+      "keywords": [
+        "outdoor kitchen builders near me", "outdoor kitchen contractors near me",
+        "outdoor kitchen companies near me"
+      ]
+    }
+  }
+}
