@@ -53,11 +53,23 @@ Why this was safe to mark primary:
 No conversion value is set. If a niches-list lead is later found to be worth a
 consistent amount, add a default value and value-based bidding becomes possible.
 
-## What is left (site side — needs to be pasted by hand)
+## Site side — INSTALLED 2026-09-05
 
-The snippet below could not be installed automatically: writing executable PHP
-into the live site was blocked by the session's permission classifier. It takes
-about two minutes to add manually.
+Live as WPCode snippet **16644**, "Google Ads Conversion - Klaviyo Niches Opt-In"
+— PHP type, Run Everywhere, priority 10, published. Created as a draft first,
+content verified intact after the write (WordPress can strip `<script>` tags on
+the way in — it did not), terms and meta set, then activated.
+
+The installed version also passes the lead's email to `gtag` as `user_data`, so
+the web conversion benefits from enhanced conversions for leads, which is already
+enabled on the account. `gtag` hashes it in the browser; the raw address never
+leaves the page.
+
+**Still uncovered: the Homepage Hero form.** It posts server-side to the Klaviyo
+API and emits no `klaviyoForms` event, so those opt-ins remain invisible. See
+`ep_gclid_capture_spec.md`.
+
+The code below is the installed version, kept here for reference.
 
 ### Prerequisite already satisfied
 

@@ -111,8 +111,6 @@ if ( is_admin() ) {
     return;
 }
 
-const EP_CLICK_COOKIE = '_ep_click';
-
 // --- write on landing -------------------------------------------------------
 add_action( 'init', function () {
     if ( headers_sent() ) {
@@ -133,7 +131,7 @@ add_action( 'init', function () {
             continue;
         }
 
-        setcookie( EP_CLICK_COOKIE, wp_json_encode( array(
+        setcookie( '_ep_click', wp_json_encode( array(
             'id'   => $raw,
             'type' => $param,
             'ts'   => gmdate( 'c' ),   // ISO 8601, needed for the upload later
@@ -154,8 +152,8 @@ add_action( 'rest_api_init', function () {
         'methods'             => 'GET',
         'permission_callback' => '__return_true',
         'callback'            => function () {
-            $raw = isset( $_COOKIE[ EP_CLICK_COOKIE ] )
-                ? json_decode( wp_unslash( $_COOKIE[ EP_CLICK_COOKIE ] ), true )
+            $raw = isset( $_COOKIE[ '_ep_click' ] )
+                ? json_decode( wp_unslash( $_COOKIE[ '_ep_click' ] ), true )
                 : null;
 
             if ( ! is_array( $raw ) || empty( $raw['id'] ) ) {
