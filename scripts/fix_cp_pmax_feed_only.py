@@ -38,6 +38,9 @@ ACCOUNT = "Culinary Profis"
 PMAX = 24222890101
 REFERENCE = ("Fountains USA", 24209826676)
 
+# Same two opt-outs apply to any feed-only PMax that is short of the
+# reference set; pass --account/--campaign to target another one.
+
 
 def automations(ga, cust, cid):
     for r in ga.search(customer_id=cust, query=f"""
@@ -51,19 +54,21 @@ def automations(ga, cust, cid):
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--execute", action="store_true")
+    ap.add_argument("--account", default=ACCOUNT)
+    ap.add_argument("--campaign", type=int, default=PMAX)
     args = ap.parse_args()
 
     client = get_client()
-    cust = resolve_account(ACCOUNT)["id"]
+    cust = resolve_account(args.account)["id"]
     ga = client.get_service("GoogleAdsService")
     e = client.enums
 
-    have = automations(ga, cust, PMAX)
+    have = automations(ga, cust, args.campaign)
     ref_cust = resolve_account(REFERENCE[0])["id"]
     want = automations(ga, ref_cust, REFERENCE[1])
 
     print(f"{'EXECUTING' if args.execute else 'DRY RUN'}\n")
-    print(f"  {ACCOUNT} [{PMAX}]")
+    print(f"  {args.account} [{args.campaign}]")
     for k, v in sorted(have.items()):
         print(f"     {k:44} {v}")
     print(f"\n  reference {REFERENCE[0]} [{REFERENCE[1]}]")
@@ -81,7 +86,8 @@ def main():
 
     op = client.get_type("CampaignOperation")
     c = op.update
-    c.resource_name = client.get_service("CampaignService").campaign_path(cust, PMAX)
+    c.resource_name = client.get_service("CampaignService").campaign_path(
+        cust, args.campaign)
     # AssetAutomationSetting is nested under Campaign, so get_type cannot
     # resolve it; proto-plus accepts a dict for a repeated message field.
     # The field is replaced wholesale, so the existing opt-outs are resent.
@@ -97,7 +103,7 @@ def main():
     client.get_service("CampaignService").mutate_campaigns(
         customer_id=cust, operations=[op])
 
-    after = automations(ga, cust, PMAX)
+    after = automations(ga, cust, args.campaign)
     print("\n  after:")
     for k, v in sorted(after.items()):
         print(f"     {k:44} {v}")
