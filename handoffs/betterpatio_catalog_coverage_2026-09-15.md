@@ -169,3 +169,51 @@ idempotent and skips asset groups that already have a tree.
   Maximize Conversions has very little to learn from. This campaign will be
   slow to leave learning, and that is the same underlying problem flagged
   three times already in this account.
+
+---
+
+# Correction — all brands in the ONE PMax, 15 September 2026
+
+The separate campaign was the wrong read of the request. Every brand now has
+its own asset group inside **`BP · PMax — Outdoor Kitchens` [24209664922]**,
+the live $110/day campaign.
+
+| | |
+|---|---|
+| enabled asset groups | **28** (3 with creative + 25 feed-only) |
+| products reachable | **10,771 of 10,771 — the whole catalogue** |
+| new asset groups | 24 named brands + `BP · All Other Brands` |
+
+The three original groups (Mont Alpi, Cal Flame, BetterPatio House Brands)
+are untouched: 35 assets each, still LIMITED, still pointing at the custom
+kitchens landing page with their search themes and video. The 25 new ones
+carry no assets at all and read PENDING / ASSET_GROUP_UNDER_REVIEW, which is
+normal for a new asset group; they become ELIGIBLE once review clears.
+
+`BP · All Other Brands` uses an "everything else" include and excludes only
+the 24 named brands. The API accepted that wider form, which means it also
+sweeps up the **products the three kitchen groups exclude by product type** --
+Cal Flame fireplaces, fire pits and spas, the stray furniture SKUs. That is
+what closes the last 285 products and takes coverage to 100%.
+
+New brands added to the feed are advertised automatically by the catch-all.
+
+## The duplicate campaign
+
+`BP · PMax — All Brands (feed only)` [24258810910] was renamed to
+**`ZZ SUPERSEDED — do not enable (brands live in BP · PMax — Outdoor Kitchens)`**
+and left PAUSED. Lifetime spend $0.00. It still holds 25 asset groups and
+a $50/day budget. It should be removed once confirmed -- deleting campaigns
+is not something to do unasked, and a paused duplicate is exactly the clutter
+flagged in the Culinary Profis notes.
+
+## What changed about the live campaign's behaviour
+
+This campaign previously served 222 products on $110/day. It now serves
+10,771. The budget did not change, so the same money now spreads across the
+entire catalogue instead of outdoor kitchens only, and Google will reallocate
+toward whatever converts. Two consequences worth watching:
+
+- The custom-kitchens funnel no longer has the campaign to itself.
+- Purchase is still the only conversion goal and fires ~5 times per 90 days,
+  so there is very little signal to steer 28 asset groups with.
