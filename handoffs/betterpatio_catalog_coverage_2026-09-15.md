@@ -97,3 +97,75 @@ represented, absent where it is not, and the whole campaign paused regardless.
 Setting bids and enabling campaigns both change spend, so neither was done.
 `BP 2: Brands` is $90/day, `BP 1: Generic` $90/day, `BP 3: Products` $90/day.
 Needs a budget and a starting bid per brand tier.
+
+---
+
+# Update — feed-only PMax built, 15 September 2026
+
+## Correction to the note above
+
+The claim that the 14 paused per-brand PMax shells "will spend and not serve"
+was **wrong**. Zero-asset PMax is exactly how feed-only campaigns work, and it
+is the pattern already running in the other three accounts. `FUSA - PMax -
+Fountains (feed only)` has four asset groups with **0 assets and POOR ad
+strength**, primary status **ELIGIBLE**, and delivered 16,768 impressions /
+169 clicks / $215.15 over 30 days. With no creative, PMax has no display or
+video ad to assemble, so it serves Shopping inventory from the feed.
+
+Those 14 shells still are not the right vehicle — they cover 14 brands, not 54,
+at $10/day each — but the reason is coverage and budget, not inability to serve.
+
+## What was built
+
+`BP · PMax — All Brands (feed only)` [24258810910], **PAUSED**, $50/day.
+
+| | |
+|---|---|
+| asset groups | 25 (24 named brands + 1 catch-all), no assets |
+| products reachable | **10,486 of 10,771** |
+| bidding | Maximize Conversions, no target CPA |
+| conversion goal | Purchase / Website (inherited from the account) |
+| geo | same 48 locations as the kitchens campaign, PRESENCE |
+| Merchant Center | 101451631, brand guidelines on |
+
+Brands with 20+ eligible products get their own asset group: The Outdoor Plus
+(5,583), Panama Jack Outdoor (1,369), Hospitality Rattan Patio (1,245),
+Anderson Teak (614), Chicago Brick Oven (212), Skyline Design (194), Fire Pit
+Art (161), RCS (99), Panama Jack Sunroom (90), Bull (83), Summerset (76),
+Dimplex (70), Fire Magic (66), Hospitality Rattan Home (60), Big Ridge (53),
+Napoleon (49), Blaze (49), Coyote (44), Le Griddle (29), MirageVision (27),
+Primo Ceramic Grills (22), Mayne (21), Douglas Nance (20), American Outdoor
+Grill (20).
+
+`BP · All Other Brands` holds the remaining 22 brands / 230 products via an
+"everything else" include, with explicit excludes for the 24 named brands and
+the 9 kitchens brands. **New brands added to the feed are advertised
+automatically** — no rebuild needed.
+
+The nine brands served by `BP · PMax — Outdoor Kitchens` (285 products) are
+deliberately excluded so the two campaigns never bid against each other.
+That campaign keeps its creative, search themes and video.
+
+## Two API rules learned the hard way
+
+The first build attempt created the campaign, budget, geo and all 25 asset
+groups, then failed on the listing trees and left them empty.
+
+1. A SUBDIVISION and its children must be created in **one** mutate using
+   temporary resource names (negative ids). A bare subdivision is rejected
+   with "SUBDIVISION node must have everything else child", and because the
+   request is atomic, one bad operation rolls back all 25.
+2. The "everything else" sibling must declare its dimension. Touching an
+   empty proto3 message does not set the oneof, so it needs an explicit
+   `SetInParent()` with no value.
+
+Tree building now lives in `complete_bp_feedonly_listing_groups.py`, which is
+idempotent and skips asset groups that already have a tree.
+
+## Before enabling — needs a decision
+
+- **Budget.** $50/day is a placeholder. The kitchens PMax is $110/day.
+- **Purchase is the only conversion goal and it fires ~5 times per 90 days.**
+  Maximize Conversions has very little to learn from. This campaign will be
+  slow to leave learning, and that is the same underlying problem flagged
+  three times already in this account.
