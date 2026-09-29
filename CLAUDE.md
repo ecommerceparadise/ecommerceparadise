@@ -11,7 +11,9 @@ campaign, run:
     PYTHONPATH=/home/user/ecommerceparadise .venv/bin/python \
         scripts/disable_asset_automation_everywhere.py --execute
 
-It is idempotent and safe to re-run. Only these channels expose the setting:
+It is idempotent and safe to re-run, and it sweeps every account in
+`managed_accounts.json` -- so adding an account there is enough; do not
+hardcode a second list. Only these channels expose the setting:
 
 | channel | types to opt out |
 |---|---|
@@ -33,7 +35,9 @@ Fountains USA, with all five off, ran 15,843 Search against 16 Display.
 - v25 via `google-ads` 31.4.0 in `.venv`. System pip raises
   `pyo3_runtime.PanicException` — always use the venv:
   `PYTHONPATH=/home/user/ecommerceparadise .venv/bin/python scripts/X.py`
-- Only the five accounts in `managed_accounts.json` may be touched.
+- Only the accounts in `managed_accounts.json` may be touched (six as of
+  2026-09-29). `resolve_account` matches the LIVE account name from the API, so
+  an allowlist entry whose name differs from the live one resolves only by id.
 - Campaigns are created PAUSED. Never enable a campaign, raise a budget or
   change a bid strategy without explicit confirmation in the conversation.
 - Never delete campaigns, ad groups or conversion actions — pause instead.
@@ -72,7 +76,20 @@ The house pattern: one asset group per brand, each with a brand listing filter
 and NO text, image, logo or video assets. Ad strength reads POOR and the group
 is still ELIGIBLE — zero-asset asset groups DO serve, from the feed. Reference
 implementations: `FUSA - PMax - Fountains (feed only)`,
-`LES - PMax - Lasers (feed only)`, `CP - PMax - Culinary (feed only)`.
+`LES - PMax - Lasers (feed only)`, `CP - PMax - Culinary (feed only)`,
+`HS - PMax - HVAC (feed only)`.
+
+Every asset group needs search themes AND the account's shared audience signal,
+not just a listing filter. A group with a brand filter and no signals is the one
+failure mode that looks finished in the UI: it will serve, but PMax has no query
+intent to work from. Four LES groups shipped that way on 28 Sept and were
+backfilled on 29 Sept. Build signals in the same script that builds the group.
+
+### Per-account conventions worth not rediscovering
+
+| account | geo | notes |
+|---|---|---|
+| HVAC Saver | US minus Alaska, Hawaii, Puerto Rico | freight on AC/furnace equipment; 21 of 24 campaigns already did this |
 
 ## Client data boundaries
 

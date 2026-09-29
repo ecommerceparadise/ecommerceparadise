@@ -37,10 +37,18 @@ import sys
 from collections import Counter
 
 from google_ads.auth import get_client
-from google_ads.accounts import resolve_account
+from google_ads.accounts import load_managed_accounts, resolve_account
 
-ACCOUNTS = ["BetterPatio.com", "Laser Engraver Store", "eCommerce Paradise",
-            "Culinary Profis", "Fountains USA"]
+
+def all_managed():
+    """Every account on the allowlist, by id.
+
+    Derived rather than hardcoded so an account added to
+    managed_accounts.json is swept automatically -- the standing rule is
+    "every campaign, always", and a list kept in this file silently stopped
+    covering HVAC Saver the day it was added.
+    """
+    return [a["id"] for a in load_managed_accounts()]
 
 BY_CHANNEL = {
     "PERFORMANCE_MAX": [
@@ -67,8 +75,9 @@ def main():
 
     tally = Counter()
     print(f"{'EXECUTING' if args.execute else 'DRY RUN'}\n")
-    for acct in (args.account or ACCOUNTS):
-        cust = resolve_account(acct)["id"]
+    for acct in (args.account or all_managed()):
+        resolved = resolve_account(acct)
+        cust, acct = resolved["id"], resolved["name"]
         plan = []
         for r in ga.search(customer_id=cust, query="""
             SELECT campaign.id, campaign.name, campaign.status,
