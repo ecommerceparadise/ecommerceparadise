@@ -79,17 +79,31 @@ implementations: `FUSA - PMax - Fountains (feed only)`,
 `LES - PMax - Lasers (feed only)`, `CP - PMax - Culinary (feed only)`,
 `HS - PMax - HVAC (feed only)`.
 
-Every asset group needs search themes AND the account's shared audience signal,
-not just a listing filter. A group with a brand filter and no signals is the one
-failure mode that looks finished in the UI: it will serve, but PMax has no query
-intent to work from. Four LES groups shipped that way on 28 Sept and were
-backfilled on 29 Sept. Build signals in the same script that builds the group.
+Every asset group needs search themes AND an audience signal, not just a
+listing filter. A group with a brand filter and no signals is the one failure
+mode that looks finished in the UI: it will serve, but PMax has no query intent
+to work from. Four LES groups shipped that way on 28 Sept (backfilled 29 Sept)
+and 24 of BetterPatio's 26 groups were like it on a $180/day campaign
+(backfilled 30 Sept). Build signals in the same script that builds the group.
+
+ONE shared audience per account only works when the catalogue is one thing
+(LES is all lasers, HVAC Saver all HVAC). Where a store spans product families,
+build one audience per family and assign it per group -- BetterPatio sells
+grills, sofas and fire pits, so blending "Garden & Outdoor Furniture" into the
+Blaze grill group would tell Google a sofa shopper is a grill prospect.
+
+Before writing themes for an asset group, check the brand still has servable
+products. Asset groups outlive the brands they filter on: seven BetterPatio
+groups read ELIGIBLE with zero products in the feed, because those brands left
+the catalogue after the groups were built. Themes there buy traffic the store
+cannot fulfil.
 
 ### Per-account conventions worth not rediscovering
 
 | account | geo | notes |
 |---|---|---|
 | HVAC Saver | US minus Alaska, Hawaii, Puerto Rico | freight on AC/furnace equipment; 21 of 24 campaigns already did this |
+| BetterPatio | — | asset group names use a MIDDLE DOT: `BP · Cal Flame`, not `BP - `. Cal Flame and Mont Alpi filter on product_type, every other group on product_brand. |
 
 ## Client data boundaries
 
