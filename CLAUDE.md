@@ -58,7 +58,25 @@ Fountains USA, with all five off, ran 15,843 Search against 16 Display.
   rolls back the batch.
 - An "everything else" listing node must declare its dimension. Touching an
   empty proto3 message does not set the oneof — use
-  `f._pb.case_value.product_brand.SetInParent()`.
+  `f._pb.case_value.product_brand.SetInParent()`. For a product_type
+  dimension that is not enough: `case_value.product_type.level` is also
+  REQUIRED (e.g. `LEVEL1`).
+- A listing-filter batch is validated OPERATION BY OPERATION, not at the end.
+  Removing a SUBDIVISION's everything-else child while the subdivision still
+  has other children fails with
+  `SUBDIVISION_MUST_HAVE_EVERYTHING_ELSE_CHILD`. To reshape a subtree, remove
+  the whole thing in one atomic mutate — children first, the subdivision last
+  — and create the replacement in the same request. That is accepted.
+- `CONCURRENT_MODIFICATION` ("Multiple requests were attempting to modify the
+  same resource at once") is transient. Retry with backoff; do not treat it as
+  a real failure. It can leave a multi-step build half-done, so build scripts
+  should be resumable rather than abort-if-exists.
+- To judge which products an asset group can serve, WALK THE TREE. Reading
+  `UNIT_INCLUDED` nodes in isolation misreads a brand-scoped tree
+  (`ROOT -> SUBDIVISION brand=X -> UNIT_INCLUDED type=Y`) as a bare
+  product-type filter, which wrongly looks like it is catching every brand.
+  Descend from the root, matching each subdivision's dimension and falling
+  back to the everything-else sibling.
 - `campaign_conversion_goal` OVERRIDES `customer_conversion_goal`. Leaving it
   unset lets a campaign inherit the account goal. Setting it at campaign level
   has silently blinded three campaigns in these accounts.
