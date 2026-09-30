@@ -195,6 +195,17 @@ Responsive display ad creative is IMMUTABLE. Adding a logo, a headline or an
 image to an existing RDA is impossible -- build a new ad with the same text and
 image assets plus the addition, then pause the old one.
 
+RDA field caps, worth validating before a mutate: headline 30 chars (5 max),
+description 90 chars (5 max), long headline 90, business name 25. Marketing
+images must be 1.91:1 and square marketing images and logos 1:1, so check
+`asset.image_asset.full_size` dimensions rather than trusting a filename -- a
+2000x1040 image looks landscape but is 1.923:1 and will be refused.
+
+When picking images for an account whose catalogue is brand-restricted, take
+them from a brand-specific asset group rather than the account's asset library.
+HVAC Saver has 227 image assets and only Goodman may be advertised; pulling
+"a square image" at random could surface a Daikin unit.
+
 `BP · Dynamic Display Remarketing Ads` [24040677834], fixed 30 September 2026:
 its four remarketing lists all sat in one ad group, where 84,000 general
 visitors buried 200 cart abandoners, so the high-intent audience never won an
@@ -245,6 +256,24 @@ will keep showing up as an apparent coverage gap. It is not one.
   one of them were switched on.
 - `WITHHELD_BRANDS` in `scripts/prune_pmax_asset_groups.py` carries this, so
   the audit reports Daikin as withheld rather than as a gap.
+
+**`HS - Display Dynamic Remarketing (HOLD - do not enable, Daikin in feed)`
+[24298306452] must stay PAUSED.** Built 30 September 2026 on Trevor's
+instruction to build it and hold. A Display dynamic remarketing campaign has NO
+brand filter (verified: BetterPatio's ten feed-attached Display campaigns carry
+zero `LISTING_GROUP` criteria; Display targets by USER_LIST, KEYWORD, TOPIC,
+AGE_RANGE, USER_INTEREST, CUSTOM_INTENT, YOUTUBE_CHANNEL only). The feed has one
+label, `US`, holding goodman 453 and daikin 103 together, so enabling this
+campaign shows a Daikin browser their Daikin product. Two prerequisites, both
+outside Google Ads:
+
+1. Merchant Center needs a GOODMAN-ONLY feed label (supplemental feed or feed
+   rule), and the campaign's `shopping_setting.feed_label` must point at it.
+2. The retail remarketing tag on hvacsaver.com must pass product IDs. After
+   1,205 clicks in September, `Product viewers`, `Shopping cart abandoners` and
+   `Past buyers` all read 0 while `General visitors` reads 2,600 -- the
+   page-level tag fires, the product-level one does not. Dynamic remarketing has
+   nothing to be dynamic about until that is fixed.
 
 ## Client data boundaries
 
