@@ -154,6 +154,20 @@ returning their listing filters from the API, so coverage queries must join on
 These are the client's instructions, not optimisation choices. Do not "fix"
 them by building the coverage back.
 
+### Fountains USA: only the four brands originally set up
+
+The client only wants the brands we initially set up (Trevor, 30 September
+2026): `fiore stone`, `giannini garden`, `metropolitan galleries inc.` and
+`the outdoor plus`. Everything else in the feed -- 1,934 of 8,324 products
+across 11 brands, led by phoenix precast (666), travertine & more (336) and
+easy pro pond (261) -- is deliberately unadvertised. Do NOT build groups for
+them, however much it looks like a coverage gap on the account with the best
+ROAS in the portfolio.
+
+Recorded as `ADVERTISE_ONLY` (an allowlist) rather than a list of excluded
+brands in `scripts/prune_pmax_asset_groups.py`, so a brand added to the feed
+later is withheld too instead of surfacing as a new gap.
+
 ### HVAC Saver: Goodman only, never Daikin
 
 The client asked to advertise Goodman and NOT Daikin (Trevor, 30 September

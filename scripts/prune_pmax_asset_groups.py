@@ -52,6 +52,18 @@ WITHHELD_BRANDS = {
     "4357556670": {"daikin"},
 }
 
+# The inverse, where the client named what they DO want rather than what they
+# do not: any brand outside the set is withheld on purpose. An allowlist is
+# used here rather than a list of the excluded brands so that a brand added to
+# the feed later is withheld too, instead of surfacing as a new coverage gap.
+#   Fountains USA: the client only wants the brands originally set up
+#   (Trevor, 30 September 2026). That leaves 1,934 of 8,324 products
+#   deliberately unadvertised -- do not build groups for them.
+ADVERTISE_ONLY = {
+    "8148956333": {"giannini garden", "metropolitan galleries inc.",
+                   "the outdoor plus", "fiore stone"},
+}
+
 
 def servable_products(ga, cust):
     """Every product that could serve, as a list of (brand, product_type).
@@ -216,18 +228,26 @@ def main():
             kept_brands = {v for _, g, _ in keep for k, v in g["inc"] if k == "brand"}
             kept_types = {v for _, g, _ in keep for k, v in g["inc"] if k == "type"}
             withheld_brands = WITHHELD_BRANDS.get(str(cust), set())
+            allowed = ADVERTISE_ONLY.get(str(cust))
             orphan, withheld = Counter(), Counter()
             for b, ty in products:
-                if b in withheld_brands:
+                deliberate = (b in withheld_brands
+                              or (allowed is not None and b not in allowed))
+                if deliberate:
                     withheld[b] += 1
                 elif b not in kept_brands and ty not in kept_types:
                     orphan[b] += 1
             if withheld:
+                why = ("only the brands the client named are advertised"
+                       if allowed is not None
+                       else "the client asked not to advertise these")
                 print(f"      WITHHELD on purpose ({sum(withheld.values())} "
-                      f"products) -- the client asked not to advertise these, "
+                      f"products, {len(withheld)} brands) -- {why}, "
                       f"so this is not a gap:")
-                for b, n in withheld.most_common():
-                    print(f"        {b:40} {n:>5}")
+                for b, n in withheld.most_common(8):
+                    print(f"        {b or '(no brand)':40} {n:>5}")
+                if len(withheld) > 8:
+                    print(f"        ... and {len(withheld) - 8} more brands")
             if orphan:
                 n_prod = sum(orphan.values())
                 print(f"      NOT REACHABLE by any kept group "
