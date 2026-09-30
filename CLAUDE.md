@@ -98,6 +98,32 @@ groups read ELIGIBLE with zero products in the feed, because those brands left
 the catalogue after the groups were built. Themes there buy traffic the store
 cannot fulfil.
 
+### No catch-all asset groups
+
+Trevor's instruction, 30 September 2026: "we should only have asset groups for
+specific brands that have products in the feed. we should not have an all other
+brands asset group either" -- "we need to hyper focus these asset groups one per
+brand." This REPLACES the earlier catch-all pattern; the one built into
+`HS - PMax - HVAC (feed only)` on 29 Sept was wrong and is paused.
+
+Three rules, enforced by `scripts/prune_pmax_asset_groups.py` (dry run by
+default, `--execute` to apply, safe to re-run):
+
+1. one asset group per brand, and only for brands with servable products
+2. no "all other brands" / everything-else group
+3. every enabled group carries search themes AND an audience signal
+
+The trade-off is real and must be reported, not glossed: with no catch-all, a
+brand with no group of its own cannot serve at all, and a brand added to the
+feed later stays dark until someone builds it a group. The script prints the
+unreachable count per account. Reachability is judged PER PRODUCT, not per
+brand, because some groups filter on product_type -- counting by brand alone
+wrongly reports type-covered brands as orphans.
+
+Asset groups are PAUSED, never REMOVED. Both paused and removed groups keep
+returning their listing filters from the API, so coverage queries must join on
+`asset_group.status` either way.
+
 ### Per-account conventions worth not rediscovering
 
 | account | geo | notes |
