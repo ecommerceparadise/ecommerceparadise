@@ -98,8 +98,25 @@ settings stop Google GENERATING creative; they do nothing about creative a
 human uploaded. Check `asset_group_asset` directly -- two BetterPatio groups
 carried 34 enabled assets each (10 headlines, 4 descriptions, 11 images, 5
 YouTube videos) on a $180/day campaign long after the automations were off, so
-PMax could still assemble Display and Video ads for them. Both also read
-LIMITED, and pausing the asset links cleared it. Ad strength reads POOR and the group
+PMax could still assemble Display and Video ads for them.
+
+**An asset group that has assets can never become feed only. It must be
+replaced.** Two things that look like fixes are not:
+
+* Pausing the asset links leaves them attached. The creative still shows on the
+  group in the UI and the group still is not feed only.
+* Removing the links is rejected outright. Google validates the group's FINAL
+  state and returns all five minimums at once --
+  `NOT_ENOUGH_HEADLINE_ASSET`, `NOT_ENOUGH_LONG_HEADLINE_ASSET`,
+  `NOT_ENOUGH_DESCRIPTION_ASSET`, `NOT_ENOUGH_MARKETING_IMAGE_ASSET`,
+  `NOT_ENOUGH_SQUARE_MARKETING_IMAGE_ASSET`.
+
+A zero-asset asset group is only legal if it is CREATED that way. So retire the
+old group (rename with a `ZZ REPLACED (had creative) - ` prefix and PAUSE it)
+and create a fresh one, carrying over its search themes, audience and brand
+filter. `scripts/replace_bp_legacy_asset_groups.py` does exactly that. The cost
+is the retired group's learning history, so weigh it -- but a group carrying
+creative is not feed only, whatever else is configured. Ad strength reads POOR and the group
 is still ELIGIBLE — zero-asset asset groups DO serve, from the feed. Reference
 implementations: `FUSA - PMax - Fountains (feed only)`,
 `LES - PMax - Lasers (feed only)`, `CP - PMax - Culinary (feed only)`,

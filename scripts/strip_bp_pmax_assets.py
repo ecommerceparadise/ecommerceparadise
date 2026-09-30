@@ -19,9 +19,16 @@ PMax can assemble Display and Video ads for these two groups, which is exactly
 the Display-spend leak the feed-only pattern exists to avoid, and exactly what
 happened at Culinary Profis.
 
-The asset LINKS are set to PAUSED, not REMOVED. The underlying assets stay in
-the account's asset library either way, so nothing is destroyed and relinking
-is a one-click job, but PAUSED keeps the link itself visible and reversible.
+The asset LINKS are REMOVED, not paused. Pausing was the first attempt and it
+was the wrong operation: a paused link is still attached to the asset group, so
+the creative still shows up on the group in the UI and still counts as assets on
+a campaign that is meant to have none. Removing the LINK does not delete the
+asset -- every asset stays in the account's asset library and can be relinked in
+one click -- so this is reversible without leaving the group looking populated.
+
+(The "pause, never delete" house rule is about campaigns, ad groups and
+conversion actions, where removal destroys history. An asset link carries no
+history of its own.)
 
 Campaign-level assets are deliberately NOT touched: one LOGO, one BUSINESS_NAME
 and eight SITELINKs. The logo and business name are required while
@@ -60,6 +67,8 @@ def main():
         WHERE campaign.id = {CAMPAIGN} AND asset_group.status = 'ENABLED'"""):
         live[r.asset_group.id] = r.asset_group.name
 
+    # Anything still LINKED counts, enabled or paused -- a paused link still
+    # shows as an asset on the group. Already-REMOVED links are left alone.
     targets = defaultdict(list)
     kinds = defaultdict(Counter)
     for r in ga.search(customer_id=cust, query=f"""
@@ -68,12 +77,14 @@ def main():
                asset_group_asset.status, asset.type, asset.id, campaign.id
         FROM asset_group_asset
         WHERE campaign.id = {CAMPAIGN}
-          AND asset_group_asset.status = 'ENABLED'"""):
+          AND asset_group_asset.status IN ('ENABLED', 'PAUSED')"""):
         if r.asset_group.id not in live:
             continue
         targets[r.asset_group.name].append(
             r.asset_group_asset.resource_name)
-        kinds[r.asset_group.name][r.asset_group_asset.field_type.name] += 1
+        kinds[r.asset_group.name][
+            f"{r.asset_group_asset.field_type.name} "
+            f"({r.asset_group_asset.status.name.lower()})"] += 1
 
     print("=" * 74)
     print("DRY RUN" if not args.execute else "EXECUTING")
@@ -91,10 +102,10 @@ def main():
     for nm in sorted(targets):
         n = len(targets[nm])
         total += n
-        print(f"\n  {nm}  --  {n} enabled assets to PAUSE")
+        print(f"\n  {nm}  --  {n} asset links to REMOVE")
         for ft, c in sorted(kinds[nm].items(), key=lambda kv: -kv[1]):
             print(f"      {ft:28} {c:>3}")
-    print(f"\nTOTAL asset links to pause: {total}")
+    print(f"\nTOTAL asset links to remove: {total}")
     print("The underlying assets stay in the account library and can be "
           "relinked at any time.")
 
@@ -107,12 +118,11 @@ def main():
     for nm in sorted(targets):
         for rn in targets[nm]:
             o = client.get_type("AssetGroupAssetOperation")
-            o.update.resource_name = rn
-            o.update.status = e.AssetLinkStatusEnum.PAUSED
-            o.update_mask.paths.append("status")
+            o.remove = rn
             ops.append(o)
     svc.mutate_asset_group_assets(customer_id=cust, operations=ops)
-    print(f"\n  paused {len(ops)} asset links")
+    print(f"\n  removed {len(ops)} asset links "
+          "(the assets themselves remain in the account library)")
 
     # ---- read-back --------------------------------------------------------
     still = Counter()
@@ -121,14 +131,14 @@ def main():
                asset_group_asset.status, campaign.id
         FROM asset_group_asset
         WHERE campaign.id = {CAMPAIGN}
-          AND asset_group_asset.status = 'ENABLED'"""):
+          AND asset_group_asset.status IN ('ENABLED', 'PAUSED')"""):
         if r.asset_group.id in live:
             still[r.asset_group.name] += 1
-    print("\n--- read-back: enabled assets per enabled asset group ---")
+    print("\n--- read-back: asset links still attached, enabled or paused ---")
     for gid, nm in sorted(live.items(), key=lambda kv: kv[1]):
         flag = "   <-- STILL HAS ASSETS" if still[nm] else ""
-        print(f"  {nm:38} {still[nm]:>3} enabled assets{flag}")
-    print(f"\n{sum(still.values())} enabled assets left across "
+        print(f"  {nm:38} {still[nm]:>3} linked assets{flag}")
+    print(f"\n{sum(still.values())} asset links left across "
           f"{len(live)} asset groups (target: 0)")
 
     for r in ga.search(customer_id=cust, query=f"""
