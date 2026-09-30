@@ -91,7 +91,15 @@ Fountains USA, with all five off, ran 15,843 Search against 16 Display.
 ## Feed-only PMax
 
 The house pattern: one asset group per brand, each with a brand listing filter
-and NO text, image, logo or video assets. Ad strength reads POOR and the group
+and NO text, image, logo or video assets.
+
+Opting out the five asset automations is NOT the same as being feed only. Those
+settings stop Google GENERATING creative; they do nothing about creative a
+human uploaded. Check `asset_group_asset` directly -- two BetterPatio groups
+carried 34 enabled assets each (10 headlines, 4 descriptions, 11 images, 5
+YouTube videos) on a $180/day campaign long after the automations were off, so
+PMax could still assemble Display and Video ads for them. Both also read
+LIMITED, and pausing the asset links cleared it. Ad strength reads POOR and the group
 is still ELIGIBLE — zero-asset asset groups DO serve, from the feed. Reference
 implementations: `FUSA - PMax - Fountains (feed only)`,
 `LES - PMax - Lasers (feed only)`, `CP - PMax - Culinary (feed only)`,
