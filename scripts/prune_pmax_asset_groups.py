@@ -41,6 +41,17 @@ from google_ads.accounts import load_managed_accounts, resolve_account
 CATCHALL_NAME_HINTS = ("all other", "everything else", "other brands",
                        "catch all", "catch-all", "catchall")
 
+# Brands the client has asked NOT to advertise. Their products are unreachable
+# on purpose, so they are reported as withheld rather than as a coverage gap --
+# otherwise every run flags them and someone eventually "fixes" it by building
+# the group the client asked not to have.
+#   HVAC Saver: the client asked to serve Goodman only, not Daikin
+#   (Trevor, 30 September 2026). The HS - Daikin asset group is paused and
+#   must stay paused; the 13 paused Daikin-named campaigns must not be enabled.
+WITHHELD_BRANDS = {
+    "4357556670": {"daikin"},
+}
+
 
 def servable_products(ga, cust):
     """Every product that could serve, as a list of (brand, product_type).
@@ -204,10 +215,19 @@ def main():
             # brand OR its product type.
             kept_brands = {v for _, g, _ in keep for k, v in g["inc"] if k == "brand"}
             kept_types = {v for _, g, _ in keep for k, v in g["inc"] if k == "type"}
-            orphan = Counter()
+            withheld_brands = WITHHELD_BRANDS.get(str(cust), set())
+            orphan, withheld = Counter(), Counter()
             for b, ty in products:
-                if b not in kept_brands and ty not in kept_types:
+                if b in withheld_brands:
+                    withheld[b] += 1
+                elif b not in kept_brands and ty not in kept_types:
                     orphan[b] += 1
+            if withheld:
+                print(f"      WITHHELD on purpose ({sum(withheld.values())} "
+                      f"products) -- the client asked not to advertise these, "
+                      f"so this is not a gap:")
+                for b, n in withheld.most_common():
+                    print(f"        {b:40} {n:>5}")
             if orphan:
                 n_prod = sum(orphan.values())
                 print(f"      NOT REACHABLE by any kept group "

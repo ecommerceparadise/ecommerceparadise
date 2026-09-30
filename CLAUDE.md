@@ -131,6 +131,30 @@ returning their listing filters from the API, so coverage queries must join on
 | HVAC Saver | US minus Alaska, Hawaii, Puerto Rico | freight on AC/furnace equipment; 21 of 24 campaigns already did this |
 | BetterPatio | — | asset group names use a MIDDLE DOT: `BP · Cal Flame`, not `BP - `. Cal Flame and Mont Alpi filter on product_type, every other group on product_brand. |
 
+## Client-requested exclusions
+
+These are the client's instructions, not optimisation choices. Do not "fix"
+them by building the coverage back.
+
+### HVAC Saver: Goodman only, never Daikin
+
+The client asked to advertise Goodman and NOT Daikin (Trevor, 30 September
+2026). Daikin is 101 servable products, roughly a fifth of the feed, and it
+will keep showing up as an apparent coverage gap. It is not one.
+
+- `HS - Daikin` [6753068326] is PAUSED and stays paused.
+- The 13 paused Daikin-named campaigns must not be enabled: `Daikin Campaign
+  | High/Medium/Low`, `Daikin Max Clicks | High/Medium/Low`, `Daikin Shopping
+  | High/Medium/Low`, `Daikin | High/Medium/Low`, `Daikin Search`.
+- Verified safe on 30 Sept: the only enabled campaign is
+  `HS - PMax - HVAC (feed only)`, whose one enabled asset group includes
+  `brand=goodman` with everything-else excluded. The nine Goodman-named
+  Shopping campaigns each exclude non-Goodman at the ROOT of the listing tree
+  (`UNIT negative=true` on everything-else), so Daikin would stay out even if
+  one of them were switched on.
+- `WITHHELD_BRANDS` in `scripts/prune_pmax_asset_groups.py` carries this, so
+  the audit reports Daikin as withheld rather than as a gap.
+
 ## Client data boundaries
 
 - The Shopify connector points at Trevor's own store, not client stores. Do
