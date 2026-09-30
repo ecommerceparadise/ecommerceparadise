@@ -174,6 +174,40 @@ returning their listing filters from the API, so coverage queries must join on
 | HVAC Saver | US minus Alaska, Hawaii, Puerto Rico | freight on AC/furnace equipment; 21 of 24 campaigns already did this |
 | BetterPatio | — | asset group names use a MIDDLE DOT: `BP · Cal Flame`, not `BP - `. Cal Flame and Mont Alpi filter on product_type, every other group on product_brand. |
 
+## Display dynamic remarketing
+
+A Display dynamic remarketing ad is NOT feed only the way a PMax asset group
+is. A responsive display ad REQUIRES headlines, descriptions and images: the
+feed supplies the product panel (image, title, price) and the assets supply the
+frame around it. A Display ad cannot serve with zero assets, so creative on one
+is correct, not a mistake.
+
+How the feed attaches, which is easy to misread:
+
+- For a DISPLAY campaign it is `campaign.shopping_setting.merchant_id`, and
+  that is the whole mechanism. An empty `campaign_asset_set` proves nothing.
+- The MERCHANT_CENTER_FEED asset sets that every PMax campaign links are
+  GOOGLE-MANAGED. Creating such a link by hand returns `MUTATE_NOT_ALLOWED`.
+- A business data feed (`DYNAMIC_CUSTOM` asset set) is the other path, linked
+  via `campaign_asset_set`. `BP · ATS | Display` uses that one.
+
+Responsive display ad creative is IMMUTABLE. Adding a logo, a headline or an
+image to an existing RDA is impossible -- build a new ad with the same text and
+image assets plus the addition, then pause the old one.
+
+`BP · Dynamic Display Remarketing Ads` [24040677834], fixed 30 September 2026:
+its four remarketing lists all sat in one ad group, where 84,000 general
+visitors buried 200 cart abandoners, so the high-intent audience never won an
+auction. Now one ad group per intent tier (Cart Abandoners, Product Viewers,
+General Visitors), each with its own RDA carrying the brand logo.
+
+It bids on PURCHASE only, by Trevor's instruction of 30 September 2026, and the
+consequence is worth restating whenever this campaign comes up: it produced 0
+purchases in 90 days against $977 of spend, while its 26 lead-form submissions
+and 12 add-to-carts are excluded from the `conversions` metric. Maximize
+Conversions therefore has no signal to learn from. That is a deliberate choice,
+not an oversight.
+
 ## Client-requested exclusions
 
 These are the client's instructions, not optimisation choices. Do not "fix"
