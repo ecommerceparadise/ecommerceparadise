@@ -30,6 +30,55 @@ get headlines nobody wrote. Culinary Profis ran 34,829 Display impressions and
 $96 against 1,544 Search impressions and $23 with three of five opted out;
 Fountains USA, with all five off, ran 15,843 Search against 16 Display.
 
+## Credentials survive a container rebuild only in the environment
+
+The container is rebuilt from a fresh clone, so a local `.env` is lost. It
+happened on 1 October 2026: the venv and all five credential vars vanished and
+no API call was possible until they were restored.
+
+`google_ads/auth.py` reads real environment variables BEFORE `.env`, so the
+durable fix is to store them on the cloud environment (environment settings ->
+Edit -> API credentials, or as environment variables) rather than on disk:
+
+    GOOGLE_ADS_DEVELOPER_TOKEN
+    GOOGLE_ADS_CLIENT_ID
+    GOOGLE_ADS_CLIENT_SECRET
+    GOOGLE_ADS_REFRESH_TOKEN
+    GOOGLE_ADS_LOGIN_CUSTOMER_ID
+
+A new session then picks them up with nothing to re-paste. Never put them in
+the repo or in chat.
+
+`requirements.txt` pins `google-ads==31.4.0`. An unpinned rebuild installed
+33.0.0, which changes the default API version out from under scripts written
+against v25.
+
+## Performance Max placement and channel exclusions
+
+There is NO generally available channel off-switch in PMax. You cannot turn off
+Display or YouTube the way a Search campaign can. Google began alpha-testing a
+Partners setting with independent Search Partner and Display checkboxes in
+mid-2026; it is limited availability and does not cover YouTube.
+
+What does work, and applies to PMax:
+
+- ACCOUNT level, `customer_negative_criterion`. Since January 2026 these apply
+  across Performance Max, Demand Gen, YouTube and Display simultaneously, so
+  one list covers every campaign. v25 accepts `placement`, `placement_list`,
+  `youtube_video`, `youtube_channel`, `mobile_application`,
+  `mobile_app_category`, `content_label`, `negative_keyword_list`, `ip_block`.
+- CAMPAIGN level, `campaign_criterion` with `negative = true`, which also
+  accepts `topic`, `keyword`, `brand_list`, `webpage` and `device`.
+
+`campaign.network_settings` has `target_content_network` and `target_youtube`
+fields, but they are not the PMax lever -- do not expect setting them to work.
+
+Build the exclusion list from evidence, not guesses:
+`scripts/audit_pmax_placements.py` (read only) reports the network split per
+campaign from `segments.ad_network_type`, the actual placements from
+`performance_max_placement_view` (impressions only -- that view has no cost),
+and what is already excluded at account and campaign level.
+
 ## Google Ads API
 
 - v25 via `google-ads` 31.4.0 in `.venv`. System pip raises
