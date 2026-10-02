@@ -79,6 +79,32 @@ campaign from `segments.ad_network_type`, the actual placements from
 `performance_max_placement_view` (impressions only -- that view has no cost),
 and what is already excluded at account and campaign level.
 
+`scripts/apply_account_placement_exclusions.py` applies the exclusions to every
+managed account (dry run by default, `--execute` to apply, idempotent). Two
+families:
+
+- 16 CONTENT LABELS, an explicit auditable list. The two that matter most for
+  untargeted volume are `PARKED_DOMAIN` (domain arbitrage) and
+  `BELOW_THE_FOLD` (impressions nobody saw). Left ON deliberately: `VIDEO`
+  (too blunt, removes all video), the DV_G/PG/T ratings and
+  `BRAND_SUITABILITY_CONTENT_FOR_FAMILIES` (worth keeping), and the HEALTH and
+  remaining NEWS suitability labels (too broad for this niche).
+- ALL MOBILE APP CATEGORIES, resolved by query at run time from
+  `mobile_app_category_constant` rather than hardcoded. In-app inventory is
+  close to pure waste at these price points and is usually the bulk of
+  untargeted Display volume. `--keep-apps` skips this family.
+
+Specific sites, apps and YouTube channels are NOT in the defaults -- run the
+audit first and feed its output in with `--placements FILE`.
+
+Mutates use `partial_failure=True`, since content-label support varies by
+campaign type and one unsupported value must not roll back the batch. A rejected
+operation returns an empty `resource_name` in send order, so rejections are
+named by mapping against the planned list -- do NOT try to unpack
+`GoogleAdsFailure`, whose shape differs between library versions
+(`type(client.get_type("GoogleAdsFailure")).deserialize` does not exist in
+31.4.0).
+
 ## Google Ads API
 
 - v25 via `google-ads` 31.4.0 in `.venv`. System pip raises
