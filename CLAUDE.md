@@ -30,6 +30,39 @@ get headlines nobody wrote. Culinary Profis ran 34,829 Display impressions and
 $96 against 1,544 Search impressions and $23 with three of five opted out;
 Fountains USA, with all five off, ran 15,843 Search against 16 Display.
 
+### Every new account gets account-level placement exclusions
+
+Trevor's instruction, 2 October 2026, after the client PMax campaigns were found
+serving heavily and untargeted on Display and YouTube: "get this done for all
+accounts." This is now a standard phase of every new-account build, not a
+one-off cleanup.
+
+Account-level `customer_negative_criterion` is the only lever that reaches PMax
+(see the section below on why there is no channel off-switch), and since January
+2026 one list covers Performance Max, Demand Gen, YouTube and Display at once --
+so it is set ONCE per account and covers every campaign built afterwards. Do it
+BEFORE enabling the first campaign, so no budget goes to parked domains and
+in-app inventory while it is still a to-do.
+
+    # read only -- build the list from evidence, not guesses
+    PYTHONPATH=/home/user/ecommerceparadise .venv/bin/python \
+        scripts/audit_pmax_placements.py --account "<name or id>"
+
+    # dry run, then apply. Idempotent, so safe to re-run after any build.
+    PYTHONPATH=/home/user/ecommerceparadise .venv/bin/python \
+        scripts/apply_account_placement_exclusions.py --account "<id>" --execute
+
+It applies 16 content labels (`PARKED_DOMAIN` and `BELOW_THE_FOLD` are the
+pure-waste pair) plus every mobile app category, resolved at run time from
+`mobile_app_category_constant`. Specific sites, apps and YouTube channels are
+deliberately not defaulted -- feed them in with `--placements FILE` from the
+audit output.
+
+The full ordered procedure for a new account lives in
+`build_specs/NEW_ACCOUNT_SOP.md`: allowlist -> credentials -> **exclusions** ->
+asset automation -> feed/funnel -> conversion goals -> campaigns -> verify.
+Read it when asked to set up a new account.
+
 ## Credentials survive a container rebuild only in the environment
 
 The container is rebuilt from a fresh clone, so a local `.env` is lost. It

@@ -1,6 +1,26 @@
 {
   "name": "Standard Account Structure",
   "origin": "Derived from the BetterPatio rebuild. Trevor's intended default for every managed account.",
+  "procedure": "build_specs/NEW_ACCOUNT_SOP.md -- the ordered phases and the script for each. This file is the campaign model; that one is the order of operations.",
+
+  "account_level_setup": {
+    "note": "Set these ONCE per account, before any campaign is enabled. They are account-wide, so they also cover every campaign built later.",
+    "placement_exclusions": {
+      "required": true,
+      "added": "2 October 2026, on Trevor's instruction after the client PMax campaigns were found serving heavily and untargeted on Display and YouTube.",
+      "mechanism": "customer_negative_criterion. Since January 2026 these apply across Performance Max, Demand Gen, YouTube and Display simultaneously, so one list per account covers every campaign in it. PMax has no generally available channel off-switch and campaign.network_settings is NOT the lever.",
+      "script": "scripts/apply_account_placement_exclusions.py (dry run by default, --execute to apply, idempotent)",
+      "evidence_first": "scripts/audit_pmax_placements.py is read only and reports the network split and the actual placements. Feed specific sites/apps/channels back in with --placements FILE; do not guess them.",
+      "applies": "16 content labels (PARKED_DOMAIN and BELOW_THE_FOLD are the pure-waste pair) plus every mobile app category, resolved at run time from mobile_app_category_constant.",
+      "ui_path": "Tools > Content suitability > Excluded content; Tools > Placement exclusion lists."
+    },
+    "asset_automation": {
+      "required": true,
+      "rule": "Automatically-created assets stay OFF in every campaign, always. Set the opt-outs at campaign creation time, then sweep with scripts/disable_asset_automation_everywhere.py --execute.",
+      "channels": "Only PERFORMANCE_MAX and SEARCH expose the setting."
+    },
+    "allowlist": "Add the account to managed_accounts.json first. Both sweeps derive their account list from it, so that one edit enrols the account in every account-wide job."
+  },
 
   "the_model": {
     "principle": "Three campaigns. PMax covers everything on the acquisition side; two remarketing campaigns split by intent.",
